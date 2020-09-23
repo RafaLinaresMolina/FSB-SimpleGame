@@ -1,3 +1,158 @@
+class Item{
+  constructor(obj){
+    this.name = obj.name,
+    this.desc = obj.desc,
+    this.isEquipable = obj.isEquipable,
+    // type can be ['weapon', 'armor', 'ring', 'head', 'consumable']
+    this.type = obj.type,
+    //       [DMG    HP     MP    DEF     CRIT  ]
+    // array [ 0     0      0      0       0    ]
+    this.values = obj.values,
+    this.isInArea = obj.isInArea,
+    // Increase damage for atak/skill OR magic spell
+    this.isMagical = obj.isMagical
+  }
+
+  validTypes = ['weapon', 'armor', 'ring', 'head', 'consumable'];
+
+  setName(value){
+    this.name = value;
+  }
+
+  getName(){
+    return this.name;
+  }
+
+  setDesc(value){
+    this.desc = value;
+  }
+
+  getDesc(){
+    return this.desc;
+  }
+
+  setIsEquipable(value){
+    this.isEquipable = value;
+  }
+
+  isEquipable(){
+    return this.isEquipable;
+  }
+
+  getType(){
+    return this.type;
+  }
+
+  setType(value){
+    if(validTypes.includes(value)){
+      this.type = value;
+    } else {
+      console.log(`The type ${value} does not exist`);
+    }
+  }
+
+  getValues(){
+    return this.values;
+  }
+
+  getValueByPosition(pos){
+    return this.values[pos] ? this.values[pos] : console.log(`The position ${pos} does not exist`);
+  }
+
+  setValues(values){
+    this.values = values;
+  }
+
+  setIsInArea(value){
+    this.isInArea = value;
+  }
+
+  isInArea(){
+    return this.isInArea;
+  }
+
+  setIsMagical(value){
+    this.isInArea = value;
+  }
+
+  isMagical(){
+    return this.isInArea;
+  }
+}
+
+// Examples of Items
+
+const helmet1 = {
+  name: "Casco de acero valirio.",
+  desc: "Este casco valirio protege mucho",
+  isEquipable: true,
+  type: 'head',
+  values: [0, 0, 0, 5, 0],
+  isInArea: false,
+  isMagical: false
+}
+
+const sword1 = {
+  name: "Espada de madera",
+  desc: "Espada de madera, no muy util",
+  isEquipable: true,
+  type: 'weapon',
+  values: [10, 0, 0, 0, 0],
+  isInArea: false,
+  isMagical: false
+}
+
+const potion1 = {
+  name: "Pocion de Mana",
+  desc: "Pocion de Mana para recuperar magia",
+  isEquipable: false,
+  type: 'consumable',
+  values: [0, 0, 20, 0, 0],
+  isInArea: false,
+  isMagical: false
+}
+
+const bomb1 = {
+  name: "Bomba alquimica",
+  desc: "No quieres que te pille",
+  isEquipable: false,
+  type: 'consumable',
+  values: [0, 0, 40, 0, 0],
+  isInArea: true,
+  isMagical: false
+}
+
+const potion2 = {
+  name: "Vial de Acido",
+  desc: "Produce daño por acido",
+  isEquipable: false,
+  type: 'consumable',
+  values: [20, 0, 0, 0, 0],
+  isInArea: false,
+  isMagical: true
+}
+
+const ring1 = {
+  name: "Anillo unico",
+  desc: "Sauron lo busca",
+  isEquipable: true,
+  type: 'ring',
+  values: [100, 100, 100, 100, 1],
+  isInArea: false,
+  isMagical: true
+}
+
+const vara1 = {
+  name: "Vara de mago",
+  desc: "Gandalf la ha perdido",
+  isEquipable: true,
+  type: 'weapon',
+  values: [50, 15, 15, 10, 1],
+  isInArea: false,
+  isMagical: true
+}
+
+
 class Job{
   constructor(obj){
     this.id = obj.id;
@@ -6,7 +161,7 @@ class Job{
     this.baseMP = obj.baseMP;
     this.baseDef = obj.baseDef
     this.baseAtacks = obj.baseAtacks;
-    this.criticBase = obj.criticBase;
+    this.baseCritic = obj.baseCritic;
     this.basicItems = obj.basicItems;
   }
 
@@ -42,12 +197,12 @@ class Job{
     this.baseDef = value;
   }
 
-  getCriticBase(){
-    return this.criticBase;
+  getBaseCritic(){
+    return this.baseCritic;
   }
 
-  setCriticBase(value){
-    this.criticBase = value;
+  setBaseCritic(value){
+    this.baseCritic = value;
   }
 
   setBaseAtacks(){
@@ -60,6 +215,27 @@ class Job{
 
 }
 
+class SkillAtack{
+  constructor(obj){
+    this.name = obj.name,
+    this.desc = obj.desc,
+    this.dmg = obj.dmg,
+    this.cooldown = obj.cooldown
+  }
+
+  getName = () => this.name;
+  setName = value => this.name = value;
+  
+  getDesc = () => this.desc;
+  setDesc = value => this.desc = value;
+
+  getDmg = () => this.dmg;
+  setDmg = value => this.dmg = value;
+}
+
+const skill1 = { name: "Seek & destroy", desc: "you ambush your enemy from the shadows and dealt a lot of damage.", damage: 200, cooldown: 3};
+
+
 const jobs = [
   {
     id: 0,
@@ -68,8 +244,8 @@ const jobs = [
     baseMP: 75,
     baseDef: 25,
     baseAtacks: [
-      { name: "Holy Diver", damage: 35 },
-      { name: "Slice & Cut!", damage: 40 },
+      { name: "Holy Diver", damage: 35},
+      { name: "Slice & Cut!", damage: 40},
     ],
     baseSpells: [
       { name: "Smite", damage: 60, costMP: 50 },
@@ -122,12 +298,7 @@ class DefaultPJ {
     this.name = obj.name;
     this.job = new Job(obj.job);
     this.backpack = this.job.getBasicItems();
-    this.equipedItems = {
-      head: "",
-      boddy: "",
-      weapon: "",
-      ring: ""
-    }
+    this.equipedItems = this.job.getEquipedItems();
   }
 
   getJob(){
