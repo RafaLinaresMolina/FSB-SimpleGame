@@ -1,240 +1,248 @@
-class Item{
-  constructor(obj){
-    this.name = obj.name,
-    this.desc = obj.desc,
-    this.isEquipable = obj.isEquipable,
-    // type can be ['weapon', 'armor', 'ring', 'head', 'consumable']
-    this.type = obj.type,
-    //       [DMG    HP     MP    DEF     CRIT  ]
-    // array [ 0     0      0      0       0    ]
-    this.values = obj.values,
-    this.isInArea = obj.isInArea,
-    // Increase damage for atak/skill OR magic spell
-    this.isMagical = obj.isMagical
+class Item {
+  constructor(obj) {
+    this.name = obj.name;
+      this.desc = obj.desc;
+      this.isEquipable = obj.isEquipable;
+      // type can be ['weapon', 'armor', 'ring', 'head', 'consumable']
+      this.type = obj.type;
+      //       [DMG    HP     MP    DEF     CRIT  ]
+      // array [ 0     0      0      0       0    ]
+      this.values = obj.values;
+      this.isInArea = obj.isInArea;
+      // Increase damage for atak/skill OR magic spell
+      this.isMagical = obj.isMagical;
   }
 
-  validTypes = ['weapon', 'armor', 'ring', 'head', 'consumable'];
+  validTypes = ["weapon", "armor", "ring", "head", "consumable"];
 
-  setName(value){
-    this.name = value;
-  }
+  setName = (value) => this.name = value;
+  
 
-  getName(){
+  getName() {
     return this.name;
   }
 
-  setDesc(value){
+  setDesc(value) {
     this.desc = value;
   }
 
-  getDesc(){
+  getDesc() {
     return this.desc;
   }
 
-  setIsEquipable(value){
+  setIsEquipable(value) {
     this.isEquipable = value;
   }
 
-  isEquipable(){
+  isEquipable() {
     return this.isEquipable;
   }
 
-  getType(){
+  getType() {
     return this.type;
   }
 
-  setType(value){
-    if(validTypes.includes(value)){
+  setType(value) {
+    if (validTypes.includes(value)) {
       this.type = value;
     } else {
       console.log(`The type ${value} does not exist`);
     }
   }
 
-  getValues(){
+  getValues() {
     return this.values;
   }
 
-  getValueByPosition(pos){
-    return this.values[pos] ? this.values[pos] : console.log(`The position ${pos} does not exist`);
+  getValueByPosition(pos) {
+    return this.values[pos]
+      ? this.values[pos]
+      : console.log(`The position ${pos} does not exist`);
   }
 
-  setValues(values){
+  setValues(values) {
     this.values = values;
   }
 
-  setIsInArea(value){
+  setIsInArea(value) {
     this.isInArea = value;
   }
 
-  isInArea(){
+  isInArea() {
     return this.isInArea;
   }
 
-  setIsMagical(value){
+  setIsMagical(value) {
     this.isInArea = value;
   }
 
-  isMagical(){
+  isMagical() {
     return this.isInArea;
   }
 }
 
 // Examples of Items
-
 const helmet1 = {
   name: "Casco de acero valirio.",
   desc: "Este casco valirio protege mucho",
   isEquipable: true,
-  type: 'head',
+  type: "head",
   values: [0, 0, 0, 5, 0],
   isInArea: false,
-  isMagical: false
-}
+  isMagical: false,
+};
 
 const sword1 = {
   name: "Espada de madera",
   desc: "Espada de madera, no muy util",
   isEquipable: true,
-  type: 'weapon',
+  type: "weapon",
   values: [10, 0, 0, 0, 0],
   isInArea: false,
-  isMagical: false
-}
+  isMagical: false,
+};
 
 const potion1 = {
   name: "Pocion de Mana",
   desc: "Pocion de Mana para recuperar magia",
   isEquipable: false,
-  type: 'consumable',
+  type: "consumable",
   values: [0, 0, 20, 0, 0],
   isInArea: false,
-  isMagical: false
-}
+  isMagical: false,
+};
 
 const bomb1 = {
   name: "Bomba alquimica",
   desc: "No quieres que te pille",
   isEquipable: false,
-  type: 'consumable',
+  type: "consumable",
   values: [0, 0, 40, 0, 0],
   isInArea: true,
-  isMagical: false
-}
+  isMagical: false,
+};
 
 const potion2 = {
   name: "Vial de Acido",
   desc: "Produce daño por acido",
   isEquipable: false,
-  type: 'consumable',
+  type: "consumable",
   values: [20, 0, 0, 0, 0],
   isInArea: false,
-  isMagical: true
-}
+  isMagical: true,
+};
 
 const ring1 = {
   name: "Anillo unico",
   desc: "Sauron lo busca",
   isEquipable: true,
-  type: 'ring',
+  type: "ring",
   values: [100, 100, 100, 100, 1],
   isInArea: false,
-  isMagical: true
-}
+  isMagical: true,
+};
 
 const vara1 = {
   name: "Vara de mago",
   desc: "Gandalf la ha perdido",
   isEquipable: true,
-  type: 'weapon',
+  type: "weapon",
   values: [50, 15, 15, 10, 1],
   isInArea: false,
-  isMagical: true
-}
+  isMagical: true,
+};
 
-
-class Job{
-  constructor(obj){
+class Job {
+  constructor(obj) {
     this.id = obj.id;
     this.name = obj.name;
     this.baseHP = obj.baseHP;
     this.baseMP = obj.baseMP;
-    this.baseDef = obj.baseDef
+    this.baseDef = obj.baseDef;
     this.baseAtacks = obj.baseAtacks;
+    this.baseSkills = obj.baseSkills;
+    this.baseSpells = obj.baseSpells;
     this.baseCritic = obj.baseCritic;
     this.basicItems = obj.basicItems;
   }
 
-  getJobName(){
+  getJobName() {
     return this.name;
   }
 
-  setJobName(value){
+  setJobName(value) {
     this.name = value;
   }
 
-  getBaseHP(){
+  getBaseHP() {
     return this.baseHP;
   }
 
-  setBaseHP(value){
+  setBaseHP(value) {
     this.baseHP = value;
   }
 
-  getBaseMP(){
+  getBaseMP() {
     return this.baseMP;
   }
 
-  setBaseMP(value){
+  setBaseMP(value) {
     this.baseMP = value;
   }
 
-  getBaseDefense(){
+  getBaseDefense() {
     return this.baseDef;
   }
 
-  setBaseDefense(value){
+  setBaseDefense(value) {
     this.baseDef = value;
   }
 
-  getBaseCritic(){
+  getBaseCritic() {
     return this.baseCritic;
   }
 
-  setBaseCritic(value){
+  setBaseCritic(value) {
     this.baseCritic = value;
   }
 
-  setBaseAtacks(){
+  setBaseAtacks() {
     return this.baseAtacks;
   }
 
-  getBaseAtacks(value){
+  getBaseAtacks(value) {
     this.baseAtacks = value;
   }
 
-}
-
-class SkillAtack{
-  constructor(obj){
-    this.name = obj.name,
-    this.desc = obj.desc,
-    this.dmg = obj.dmg,
-    this.cooldown = obj.cooldown
+  getBaseSpells() {
+    return this.baseSpells;
   }
 
-  getName = () => this.name;
-  setName = value => this.name = value;
-  
-  getDesc = () => this.desc;
-  setDesc = value => this.desc = value;
+  getBaseSpells(value) {
+    this.baseSpells = value;
+  }
 
-  getDmg = () => this.dmg;
-  setDmg = value => this.dmg = value;
+  getSkillById = (pos) => this.baseSkills[pos];
+  getAtackId = (pos) => this.baseAtacks[pos];
+  getSpellById = (pos) => this.baseSpells[pos];
+
+  isSpellDoable = (pos) => {
+    return getSpellById(pos).getMpCost() > this.getJob().getBaseMP(); 
+  }
+
+  isSpellArea = (pos) => {
+    return getSpellById(pos).isArea();
+  }
+
+
+  castSpell = (pos) => {
+    if(this.getJob().getBaseMP() > 0 && isSpellDoable(pos)){
+      return getSpellById(pos).getDmg();
+    } else {
+      console.log(`Can't cast Magic.`)
+    }
+  }
 }
-
-const skill1 = { name: "Seek & destroy", desc: "you ambush your enemy from the shadows and dealt a lot of damage.", damage: 200, cooldown: 3};
-
 
 const jobs = [
   {
@@ -244,8 +252,8 @@ const jobs = [
     baseMP: 75,
     baseDef: 25,
     baseAtacks: [
-      { name: "Holy Diver", damage: 35},
-      { name: "Slice & Cut!", damage: 40},
+      { name: "Holy Diver", damage: 35 },
+      { name: "Slice & Cut!", damage: 40 },
     ],
     baseSpells: [
       { name: "Smite", damage: 60, costMP: 50 },
@@ -293,28 +301,84 @@ const jobs = [
   },
 ];
 
+class SkillAtack {
+  constructor(obj) {
+    this.name = obj.name;
+      this.desc = obj.desc;
+      this.dmg = obj.dmg;
+      this.cooldown = obj.cooldown;
+      this.currentCoolDown = 0;
+  }
+
+  getName = () => this.name;
+  setName = (value) => (this.name = value);
+
+  getDesc = () => this.desc;
+  setDesc = (value) => (this.desc = value);
+
+  getDmg = () => this.dmg;
+  setDmg = (value) => (this.dmg = value);
+
+  isSkillReady = () => {
+    return this.currentCoolDown === 0;
+  }
+
+}
+
+const skill1 = {
+  name: "Seek & destroy",
+  desc: "you ambush your enemy from the shadows and dealt a lot of damage.",
+  damage: 200,
+  cooldown: 3,
+  currentCoolDown: 0,
+};
+
+
+class MagicAtack {
+  constructor(obj) {
+    this.name = obj.name;
+    this.desc = obj.desc;
+    this.dmg = obj.dmg;
+    this.mpCost = obj.mpCost;
+    this.isArea = obj.isArea;
+  }
+
+  getName = () => this.name;
+  setName = (value) => (this.name = value);
+
+  getDesc = () => this.desc;
+  setDesc = (value) => (this.desc = value);
+
+  getDmg = () => this.dmg;
+  setDmg = (value) => (this.dmg = value);
+
+  getMpCost = () => this.mpCost;
+  setMpCost = (value) => (this.mpCost = value);
+
+  isAreaEfect = () => this.isArea;
+  setAreaEfect = (value) => this.isArea = value;
+}
+
+const spell1 = {
+  name: "Fireball",
+  desc: "you cast fire from your hands and deals damage.",
+  damage: 200,
+  mpCost: 30,
+  isArea: true,
+};
+
 class DefaultPJ {
   constructor(obj) {
     this.name = obj.name;
     this.job = new Job(obj.job);
-    this.backpack = this.job.getBasicItems();
-    this.equipedItems = this.job.getEquipedItems();
   }
 
-  getJob(){
+  getJob() {
     return this.job;
   }
 
-  setJob(value){
-    this.job = value
-  }
-
-  setAtacks(atacks) {
-    this.atacks = atacks;
-  }
-
-  setSpells(spells) {
-    this.spells = spells;
+  setJob(value) {
+    this.job = value;
   }
 
   getDamage(dmg, isMagic = false) {
@@ -343,51 +407,4 @@ class DefaultPJ {
   }
 }
 
-class meleAtack {
-  constructor(name, damage) {
-    this.name = name;
-    this.damage = damage;
-  }
-}
-
-class magicAtack {
-  constructor(name, damage, costMP) {
-    this.name = name;
-    this.damage = damage;
-    this.costMP = costMP;
-  }
-}
-
-let fighter1 = new DefaultPJ("Arthur", 2);
-let fighter2 = new DefaultPJ("Merlin", 1);
-
-console.log(fighter1.name + " vs. " + fighter2.name);
-
-console.log(
-  "Sir. " + fighter1.name + " will try to do " + fighter1.atacks[0].name
-);
-fighter2.getDamage(fighter2.spells[0].damage);
-
-console.log(
-  fighter2.name +
-    " turn.\n" +
-    fighter2.healthPoints +
-    " HP remaining | " +
-    fighter2.magicPoints +
-    " MP remaining."
-);
-
-console.log(
-  "Sir. " + fighter2.name + " will try to do " + fighter2.spells[0].name
-);
-fighter1.getDamage(fighter2.spells[0].damage, true);
-fighter2.setLostMagic(fighter2.spells[0].costMP);
-
-console.log(
-  fighter1.name +
-    " turn.\n" +
-    fighter1.healthPoints +
-    " HP remaining | " +
-    fighter1.magicPoints +
-    " MP remaining."
-);
+export { DefaultPJ, Job, Item, MagicAtack, SkillAtack };
