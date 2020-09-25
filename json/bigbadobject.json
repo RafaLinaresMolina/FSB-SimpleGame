@@ -1,0 +1,73 @@
+{
+	"items": [{
+		"helmet1": {
+			"name": "Casco de acero valirio.",
+			"desc": "Este casco valirio protege mucho",
+			"isEquipable": true,
+			"type": "head",
+			"values": [0, 0, 0, 5, 0],
+			"isInArea": false,
+			"isMagical": false
+		},
+
+		"sword1": {
+			"name": "Espada de madera",
+			"desc": "Espada de madera, no muy util",
+			"isEquipable": true,
+			"type": "weapon",
+			"values": [10, 0, 0, 0, 0],
+			"isInArea": false,
+			"isMagical": false
+		},
+
+		"potion1": {
+			"name": "Pocion de Mana",
+			"desc": "Pocion de Mana para recuperar magia",
+			"isEquipable": false,
+			"type": "consumable",
+			"values": [0, 0, 20, 0, 0],
+			"isInArea": false,
+			"isMagical": false
+		},
+
+		"bomb1": {
+			"name": "Bomba alquimica",
+			"desc": "No quieres que te pille",
+			"isEquipable": false,
+			"type": "consumable",
+			"values": [0, 0, 40, 0, 0],
+			"isInArea": true,
+			"isMagical": false
+		},
+
+		"potion2": {
+			"name": "Vial de Acido",
+			"desc": "Produce daño por acido",
+			"isEquipable": false,
+			"type": "consumable",
+			"values": [20, 0, 0, 0, 0],
+			"isInArea": false,
+			"isMagical": true
+		},
+
+		"ring1": {
+			"name": "Anillo unico",
+			"desc": "Sauron lo busca",
+			"isEquipable": true,
+			"type": "ring",
+			"values": [100, 100, 100, 100, 1],
+			"isInArea": false,
+			"isMagical": true
+		},
+
+		"vara1": {
+			"name": "Vara de mago",
+			"desc": "Gandalf la ha perdido",
+			"isEquipable": true,
+			"type": "weapon",
+			"values": [50, 15, 15, 10, 1],
+			"isInArea": false,
+			"isMagical": true
+		}
+	}]
+}
