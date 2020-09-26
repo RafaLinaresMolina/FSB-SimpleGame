@@ -2,6 +2,9 @@ const divSelectedElement = document.getElementById("selected");
 divSelectedElement.innerHTML = "";
 const selectedArray = [];
 
+const divDetailDisplay = document.getElementById("detailDisplay");
+divDetailDisplay.innerHTML = "";
+
 const cambiaPantalla = (valor) => {
   console.log(valor);
   let screen = "screen" + valor;
@@ -70,3 +73,23 @@ const selectCharacter = (i) => {
     return character;
   }
 };
+
+
+const viewDetails = (valor) => {
+  console.log(valor);
+  let detail = "detail" + valor;
+  let arrayDetail = ["detail0", "detail1", "detail2", "detail3", "detail4"];
+  arrayDetail = arrayDetail.filter((val) => !detail.includes(val));
+
+  document.getElementById(detail).style.display = "block";
+  for (let pantalla of arrayDetail) {
+    document.getElementById(pantalla).style.display = "none";
+  }
+
+  divDetailDisplay.style.display = 'block';
+  
+}
+
+const closeModal = () => {
+  divDetailDisplay.style.display = 'none';
+}

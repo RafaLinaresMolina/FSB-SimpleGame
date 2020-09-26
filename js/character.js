@@ -4,17 +4,12 @@ class Character {
   constructor(obj) {
     this.name = obj.name;
     this.job = new Job(obj.job);
-    console.log(JSON.stringify(this.job.baseSpells, null, 2));
     this.hp = this.job.getBaseHP();
     this.mp = this.job.getBaseMP();
     this.def = this.job.getBaseDefense();
-    console.log(JSON.stringify(this.job.getBaseDefense(), null, 2));
     this.skills = this.job.getBaseSkills();
-    console.log(JSON.stringify(this.job.getBaseSkills(), null, 2));
     this.spells = this.job.getBaseSpells();
-    console.log(JSON.stringify(this.job.getBaseSpells(), null, 2));
     this.critic = this.job.getBaseCritic();
-    console.log(JSON.stringify(this.job.getBaseCritic(), null, 2));
 
     this.imgCard = obj.imgCard ? obj.imgCard : '../img/portraits/default.jpg';
     this.imgGame = obj.imgGame ? obj.imgGame : '../img/portraits/default.jpg';

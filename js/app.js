@@ -47,11 +47,11 @@ const loadRoster = (rawCharacters) => {
     const character = new Character(rawCharacters[i]);
     rosterArray.push(character);
     const divCharacter = `
-    <div class="ff7 character" id="character${i}" onclick="selectCharacter(${i})">
-    <div class="rosterCard">
+    <div class="ff7 character" id="character${i}">
+    <div class="rosterCard" onclick="selectCharacter(${i})">
       <div class="image" style="background-image: url('${character.getImgCard()}')"></div>
     </div>
-    <div class="rosterText">
+    <div class="rosterText" onclick="viewDetails(${i})">
       <h1>${character.getName()}</h1>
       <div class="info">
         <div><span class="property">Class:</span> ${character
@@ -78,14 +78,20 @@ const loadRoster = (rawCharacters) => {
         </div>
       </div>
     </div>
-  </div>
-  <div id="detail${i}" style="position: relative;">
-  ${character.getName()}
-  ${JSON.stringify(character.getJob(), null, 2)}
-  </div>
+    
+  </div>  
   `;
+
+  const divDetail = `
+  <div class="ff7 detailedInfo" id="detail${i}">
+    <div style="display: flex;">${character.getName()}</div>
+    <div style="display: flex;>${JSON.stringify(character.getJob().getJobName(), null, 2)}</div>
+    <div class="buttonsForDetails">
+        <div class="closeDetail" onclick="closeModal()"> close </div>
+      </div>
+  </div>`;
     divRosterElement.innerHTML += divCharacter;
-    console.log(JSON.stringify(character, null, 2));
+    divDetailDisplay.innerHTML += divDetail;
   }
 
   localStorage.setItem("characters", JSON.stringify(rosterArray));
