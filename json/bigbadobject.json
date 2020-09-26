@@ -1,73 +1,63 @@
 {
-	"items": [{
-		"helmet1": {
-			"name": "Casco de acero valirio.",
-			"desc": "Este casco valirio protege mucho",
-			"isEquipable": true,
-			"type": "head",
-			"values": [0, 0, 0, 5, 0],
-			"isInArea": false,
-			"isMagical": false
-		},
-
-		"sword1": {
-			"name": "Espada de madera",
-			"desc": "Espada de madera, no muy util",
-			"isEquipable": true,
-			"type": "weapon",
-			"values": [10, 0, 0, 0, 0],
-			"isInArea": false,
-			"isMagical": false
-		},
-
-		"potion1": {
-			"name": "Pocion de Mana",
-			"desc": "Pocion de Mana para recuperar magia",
-			"isEquipable": false,
-			"type": "consumable",
-			"values": [0, 0, 20, 0, 0],
-			"isInArea": false,
-			"isMagical": false
-		},
-
-		"bomb1": {
-			"name": "Bomba alquimica",
-			"desc": "No quieres que te pille",
-			"isEquipable": false,
-			"type": "consumable",
-			"values": [0, 0, 40, 0, 0],
-			"isInArea": true,
-			"isMagical": false
-		},
-
-		"potion2": {
-			"name": "Vial de Acido",
-			"desc": "Produce daño por acido",
-			"isEquipable": false,
-			"type": "consumable",
-			"values": [20, 0, 0, 0, 0],
-			"isInArea": false,
-			"isMagical": true
-		},
-
-		"ring1": {
-			"name": "Anillo unico",
-			"desc": "Sauron lo busca",
-			"isEquipable": true,
-			"type": "ring",
-			"values": [100, 100, 100, 100, 1],
-			"isInArea": false,
-			"isMagical": true
-		},
-
-		"vara1": {
-			"name": "Vara de mago",
-			"desc": "Gandalf la ha perdido",
-			"isEquipable": true,
-			"type": "weapon",
-			"values": [50, 15, 15, 10, 1],
-			"isInArea": false,
-			"isMagical": true
-		}
-	}]
+  "characters": [
+    {
+      "name": "Black Mage",
+      "job": {
+        "name": "Mage",
+        "baseHP": 80,
+        "baseMP": 200,
+        "baseDef": 5,
+        "baseSkills": [{"name": "Stab and pray", "desc": "you stab with a knife your foe and pray for that to kill it.", "dmg": 5, "cooldown": 0}],
+        "baseSpells": [{"name": "Fireball", "desc": "You cast a huge amount of fire that burn a whole area.", "dmg": 50, "mpCost": 40, "isArea": true}, {"name": "Disintegrate", "desc": "You point your finguer and a green death ray shout from the tip dealing a huge amount of damage to one foe.", "dmg": 170, "mpCost": 150, "isArea": false}],
+        "basicItems": [{"name": "Mana Potion", "desc": "Restore Magic", "isEquipable": false, "type": "consumable", "values": [0, 0, 40, 0, 0], "isInArea": false, "isMagical": true, "quantity": 2},{"name": "Mage Staf", "desc": "A plain wood staf, but magical", "isEquipable": true, "type": "weapon", "values": [10, 0, 0, 0, 0], "isInArea": false, "isMagical": true}]
+      }
+    },
+    {
+      "name": "Zelot Crusader",
+      "job": {
+        "name": "Warrior",
+        "baseHP": 120,
+        "baseMP": 0,
+        "baseDef": 15,
+        "baseSkills": [{"name": "ZELOT SMASH!", "desc": "The Zelot Crusader smash his foe with his fists.", "dmg": 25, "cooldown": 2},{"name": "Shield bash", "desc": "You hit with the shield yout oponent.", "dmg": 30, "cooldown": 3}],
+        "basicItems": [{"name": "Big Heavy Sword", "desc": "Big Heavy Sword for slice enemies", "isEquipable": true, "type": "weapon", "values": [15, 0, 0, 0, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
+      }
+    },
+    {
+      "name": "Assasin roge",
+      "job": {
+        "name": "Roge",
+        "baseHP": 90,
+        "baseMP": 40,
+        "baseDef": 20,
+        "baseSkills": [{"name": "Stab Stab Stab!", "desc": "You enter in frenzy and stab your foe like a mad man.", "dmg": 15, "cooldown": 2},{"name": "Throw Knifes", "desc": "You throw knives. what else you need to know?", "dmg": 20, "cooldown": 3}],
+        "baseSpells": [{"name": "Right behind you, punk!", "desc": "You use the shadows to appear behind your oponent and stabing it.", "dmg": 150, "mpCost": 40, "isArea": false}],
+        "basicItems": [{"name": "Poisonus Dagger", "desc": "Yep, do not lick it.", "isEquipable": true, "type": "weapon", "values": [0, 0, 0, 0, 0], "isInArea": false, "isMagical": true, "quantity": 1}],
+        "baseCritic": 15
+      }
+    },
+    {
+      "name": "Holy Vindicator",
+      "job": {
+        "name": "Paladin",
+        "baseHP": 100,
+        "baseMP": 60,
+        "baseDef": 10,
+        "baseSkills": [{"name": "Deus Vult", "desc": "You hit with your morningstar your evil foes.", "dmg": 20, "cooldown": 3}],
+        "baseSpells": [{"name": "SMITE!", "desc": "You punish the evil foes!", "dmg": 50, "mpCost": 60, "isArea": false}, {"name": "Healing hands", "desc": "You heal an ally", "dmg": 0, "mpCost": 0, "isArea": false, "isForHeal": true}],
+        "basicItems": [{"name": "Holy Armor", "desc": "A Holy armor that show your enemies your Holiness", "isEquipable": true, "type": "armor", "values": [0, 0, 0, 20, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
+      }
+    },
+    {
+      "name": "Ranger Walker",
+      "job": {
+        "name": "Ranger",
+        "baseHP": 100,
+        "baseDef": 10,
+        "baseSkills": [{"name": "Rapid Shot", "desc": "You shot your arrows like a maniac.", "dmg": 15, "cooldown": 2}],
+        "basicItems": [{"name": "Longbow", "desc": "A long bow", "isEquipable": true, "type": "weapon", "values": [10, 0, 0, 0, 0], "isInArea": false, "isMagical": false, "quantity": 1}],
+        "baseCritic": 18
+      }
+    }
+  ]
 }
