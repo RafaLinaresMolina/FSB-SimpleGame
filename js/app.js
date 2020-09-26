@@ -4,30 +4,38 @@ import { Item } from "./item.js";
 import { Skill } from "./skill.js";
 import { Spell } from "./spell.js";
 
-const firstScreen = document.getElementById("screen1");
-const createElementH3 = document.createElement("h3");
-createElementH3.setAttribute("id", "loadState");
-createElementH3.innerHTML = "LOADING...";
-firstScreen.appendChild(createElementH3);
+const divScreen1 = document.getElementById("screen1");
+const divScreen2 = document.getElementById("screen2");
+const divScreen3 = document.getElementById("screen3");
+const divScreen4 = document.getElementById("screen4");
+const divScreen5 = document.getElementById("screen5");
 
-const loadState = document.getElementById("loadState");
+divScreen2.style.display = "none";
+divScreen3.style.display = "none";
+divScreen4.style.display = "none";
+divScreen5.style.display = "none";
+
+const h1Loading = document.getElementById("loadingMessage");
 
 export const getObjects = async () => {
+  await sleep(2000);;
   const myBigBadObject = await fetch("../json/bigbadobject.json");
   return await myBigBadObject.json();
 };
 
-const sleep = ms => {
+const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 getObjects()
   .then((res) => {
-    loadState.innerHTML = `LOAD COMPLETE`;
-    console.log(res["items"]);
+    h1Loading.innerHTML = `LOAD COMPLETE`;
+    buttonCambiarPantalla.style = "flex";
+    console.log(res["characters"]);
 
     // Logic here
   })
   .catch((err) => {
-    loadState.innerHTML = `LOAD FAILED`;
+    console.log(err);
+    h1Loading.innerHTML = `LOAD FAILED`;
   });
