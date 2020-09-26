@@ -4,7 +4,7 @@ class Job {
     this.baseHP = obj.baseHP;
     this.baseMP = obj.baseMP ? obj.baseMP : 0;
     this.baseDef = obj.baseDef ? obj.baseDef : 0;
-    this.baseSkills = obj.baseSkills;
+    this.baseSkills = obj.baseSkills ? obj.baseSkills : 0;
     this.baseSpells = obj.baseSpells ? obj.baseSpells : [];
     this.baseCritic = obj.baseCritic ? obj.baseCritic : 20;
     this.basicItems = obj.basicItems ? obj.basicItems : [];
@@ -17,15 +17,18 @@ class Job {
   getBaseMP = () => this.baseMP;
   setBaseMP = (value) => this.baseMP = value;
   getBaseDefense = () => this.baseDef;
+  
   setBaseDefense = (value) => this.baseDef = value;
   getBaseCritic = () => this.baseCritic;
   setBaseCritic = (value) => this.baseCritic = value;
-  setBaseAtacks = () => this.baseAtacks;
-  getBaseAtacks = (value) => this.baseAtacks = value;
+  getBaseAtacks = () => this.baseAtacks;
+  setBaseAtacks = (value) => this.baseAtacks = value;
+
   getBaseSpells = () => this.baseSpells;
-  getBaseSpells = (value) => this.baseSpells = value;
+  setBaseSpells = (value) => this.baseSpells = value;
   getBaseSkills = () => this.baseSkills;
-  getBaseSkills = (value) => this.baseSkills = value;
+  setBaseSkills = (value) => this.baseSkills = value;
+
   getSkillById = (pos) => this.baseSkills[pos];
   getAtackId = (pos) => this.baseAtacks[pos];
   getSpellById = (pos) => this.baseSpells[pos];
