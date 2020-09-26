@@ -1,7 +1,4 @@
 
-const buttonCambiarPantalla = document.getElementById("changeScreen");
-buttonCambiarPantalla.style.display = "none";
-
 const cambiaPantalla = (valor) => {
     console.log(valor)
     let screen = "screen" + valor;

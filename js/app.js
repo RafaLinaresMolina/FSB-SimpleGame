@@ -16,9 +16,12 @@ divScreen4.style.display = "none";
 divScreen5.style.display = "none";
 
 const h1Loading = document.getElementById("loadingMessage");
+const divMainMenu = document.getElementById("mainMenu");
+divMainMenu.style.visibility = "hidden";
+
 
 export const getObjects = async () => {
-  await sleep(2000);;
+  //await sleep(2000);
   const myBigBadObject = await fetch("../json/bigbadobject.json");
   return await myBigBadObject.json();
 };
@@ -30,7 +33,7 @@ const sleep = (ms) => {
 getObjects()
   .then((res) => {
     h1Loading.innerHTML = `LOAD COMPLETE`;
-    buttonCambiarPantalla.style = "flex";
+    divMainMenu.style.visibility = "visible";
     console.log(res["characters"]);
 
     // Logic here

@@ -1,32 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/textboxes.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/roster.css" />
+
     <script type="module" src="js/item.js" async></script>
     <script type="module" src="js/spell.js" async></script>
     <script type="module" src="js/skill.js" async></script>
     <script type="module" src="js/job.js" async></script>
     <script type="module" src="js/character.js" async></script>
-    <script type="module" src="js/app.js" async></script>
+
     <title>Document</title>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="container startPage" id="screen1">
-        <h1>WELLCOME</h1>
+      <div class="contentScreen1">
+        <h1 class="glow" id="loadingMessage">LOADING</h1>
+        <div class="ff7" id="mainMenu">
+          <h1>Menu</h1>
+          <div
+            id="changeScreen"
+            onclick="cambiaPantalla('2')"
+            class="selectItem"
+          >
+            <img class="hand" src="img/FF7Cursor.png" alt="" /> Start
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container selectPlayer" id="screen2">
-        <h1>SELECT PLAYER</h1>
+    <div class="ff7 container selectPlayer containerFix" id="screen2">
+      <h1 class="centerItem">SELECT PLAYER</h1>
+      <div class="rosterContent">
+        <div class="col">
+          <h1 class="ff7 centerItem textFix">Roster</h1>
+          <div class="ff7 roster">
+            <div class="ff7 character">
+              <div class="rosterCard">
+                <div class="image"></div>
+              </div>
+              <div class="rosterText">
+                <h1>Zoridan the wise</h1>
+                <div class="info">
+                  <div><span class="property">Class:</span> Black Mage</div>
+
+                  <div class="customStat">
+                    <div class="numbers">
+                      <span class="property">HP: </span>
+                      <div class="">100 / 100</div>
+                    </div>
+                    <div class="hiddenVar"><div class="hpVar"></div></div>
+                  </div>
+
+                  <div class="customStat">
+                    <div class="numbers">
+                      <span class="property">MP: </span>
+                      <div class="">100 / 100</div>
+                    </div>
+                    <div class="hiddenVar"><div class="mpVar"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ff7 character">
+              <div class="rosterCard">
+                <div class="image"></div>
+              </div>
+              <div class="rosterText">
+                <h1>Zoridan the wise</h1>
+                <div class="info">
+                  <div><span class="property">Class:</span> Black Mage</div>
+
+                  <div class="customStat">
+                    <div class="numbers">
+                      <span class="property">HP: </span>
+                      <div class="">100 / 100</div>
+                    </div>
+                    <div class="hiddenVar"><div class="hpVar"></div></div>
+                  </div>
+
+                  <div class="customStat">
+                    <div class="numbers">
+                      <span class="property">MP: </span>
+                      <div class="">100 / 100</div>
+                    </div>
+                    <div class="hiddenVar"><div class="mpVar"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <h1 class="ff7 centerItem textFix">Selected</h1>
+          <div class="ff7 roster">
+            <div class="ff7 character">
+              <div class="rosterCard">
+                <div class="image"></div>
+              </div>
+              <div class="rosterText">
+                <h1>Zoridan the wise</h1>
+                <div class="info">
+                  <div><span class="property">Class:</span> Black Mage</div>
+
+                  <div class="customStat">
+                    <div class="numbers">
+                      <span class="property">HP: </span>
+                      <div class="">100 / 100</div>
+                    </div>
+                    <div class="hiddenVar"><div class="hpVar"></div></div>
+                  </div>
+
+                  <div class="customStat">
+                    <div class="numbers">
+                      <span class="property">MP: </span>
+                      <div class="">100 / 100</div>
+                    </div>
+                    <div class="hiddenVar"><div class="mpVar"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <h1 class="ff7 centerItem textFix">Map</h1>
+          <div class="ff7 roster">
+            <div class="ff7 map">
+              <div class="rosterCard">
+                <div class="image"></div>
+              </div>
+              <div class="rosterText">
+                <h1>Forgotten dungeon</h1>
+                <div class="info">
+                  <div><span class="property">Enemies:</span> Undeads</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ff7 map">
+              <div class="rosterCard">
+                <div class="image"></div>
+              </div>
+              <div class="rosterText">
+                <h1>Forgotten dungeon</h1>
+                <div class="info">
+                  <div><span class="property">Enemies:</span> Undeads</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="container selectMap" id="screen3">
-        <h1>SELECT MAP</h1>
+      <h1>SELECT MAP</h1>
     </div>
     <div class="container fight" id="screen4">
-        <h1>FIGHT</h1>
+      <h1>FIGHT</h1>
     </div>
-    <div class="container ending" id="screen4">
-        <h1>FIGHT</h1>
+    <div class="container ending" id="screen5">
+      <h1>FIGHT</h1>
     </div>
-</body>
+
+    <script src="js/changescreen.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
 </html>
