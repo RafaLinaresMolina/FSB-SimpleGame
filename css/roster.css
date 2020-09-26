@@ -151,17 +151,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
-#detailDisplay{
+.detailDisplay{
   display: none;
   flex-direction: column;
   position: absolute;
-  margin: auto;
   width: 50%;
-  height: 50%;
-  top:15em;
+  top:5em;
   left:25em;
 }
 
@@ -172,35 +170,84 @@
 }
 
 .buttonsForDetails{
-  z-index: 3;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .closeDetail{
-  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  width: 10em;
+}
+
+.detail{
+  display: flex;
+  flex-direction: column;
+  align-content : stretch;
+  height: 30em;
+  overflow-y: scroll;
+}
+
+.detailTitle{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailContent{
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
 }
 
 #detail0 {
+  align-content : stretch;
   display: hidden;
 }
 
 #detail1 {
+  align-content : stretch;
   display: hidden;
 }
 
 #detail2 {
+  align-content : stretch;
   display: hidden;
 }
 
 #detail3 {
+  align-content : stretch;
   display: hidden;
 }
 
 #detail4 {
+  align-content : stretch;
   display: hidden;
+}
+
+
+.skillList{
+  display: flex;
+  flex-direction: column;
+  justify-items:flex-start;
+}
+
+.skillTitle{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  text-align: center;
+  justify-content:center;
+}
+
+.skillContent{
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
 }

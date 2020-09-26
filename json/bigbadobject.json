@@ -62,7 +62,7 @@
         "baseHP": 80,
         "baseMP": 200,
         "baseDef": 5,
-        "baseSkills": [{"name": "Stab and pray", "desc": "you stab with a knife your foe and pray for that to kill it.", "dmg": 5, "cooldown": 0}],
+        "baseSkills": [{"name": "Stab and pray", "desc": "you stab with a knife your foe and pray for that to be enough to kill it.", "dmg": 5, "cooldown": 0}],
         "baseSpells": [{"name": "Fireball", "desc": "You cast a huge amount of fire that burn a whole area.", "dmg": 50, "mpCost": 40, "isArea": true}, {"name": "Disintegrate", "desc": "You point your finguer and a green death ray shout from the tip dealing a huge amount of damage to one foe.", "dmg": 170, "mpCost": 150, "isArea": false}],
         "basicItems": [{"name": "Mana Potion", "desc": "Restore Magic", "isEquipable": false, "type": "consumable", "values": [0, 0, 40, 0, 0], "isInArea": false, "isMagical": true, "quantity": 2},{"name": "Mage Staf", "desc": "A plain wood staf, but magical", "isEquipable": true, "type": "weapon", "values": [10, 0, 0, 0, 0], "isInArea": false, "isMagical": true}]
       },
@@ -83,9 +83,9 @@
       "imgGame": ""
     },
     {
-      "name": "Assasin roge",
+      "name": "Assassin rogue",
       "job": {
-        "name": "Roge",
+        "name": "Rogue",
         "baseHP": 90,
         "baseMP": 40,
         "baseDef": 20,
@@ -105,7 +105,7 @@
         "baseMP": 60,
         "baseDef": 10,
         "baseSkills": [{"name": "Deus Vult", "desc": "You hit with your morningstar your evil foes.", "dmg": 20, "cooldown": 3}],
-        "baseSpells": [{"name": "SMITE!", "desc": "You punish the evil foes!", "dmg": 50, "mpCost": 60, "isArea": false}, {"name": "Healing hands", "desc": "You heal an ally", "dmg": 0, "mpCost": 0, "isArea": false, "isForHeal": true}],
+        "baseSpells": [{"name": "SMITE!", "desc": "You punish the evil foes!", "dmg": 50, "mpCost": 60, "isArea": false}, {"name": "Healing hands", "desc": "You heal an ally", "dmg": 40, "mpCost": 0, "isArea": false, "isForHeal": true}],
         "basicItems": [{"name": "Holy Armor", "desc": "A Holy armor that show your enemies your Holiness", "isEquipable": true, "type": "armor", "values": [0, 0, 0, 20, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
       },
       "imgCard": "../img/portraits/paladinCard.jpg",

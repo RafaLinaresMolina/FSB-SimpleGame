@@ -82,19 +82,103 @@ const loadRoster = (rawCharacters) => {
   </div>  
   `;
 
-  const divDetail = `
-  <div class="ff7 detailedInfo" id="detail${i}">
-    <div style="display: flex;">${character.getName()}</div>
-    <div style="display: flex;>${JSON.stringify(character.getJob().getJobName(), null, 2)}</div>
-    <div class="buttonsForDetails">
-        <div class="closeDetail" onclick="closeModal()"> close </div>
+    const divDetail = `
+  <div id="detail${i}">
+    <div class="detail">
+      <div class="detailTitle">
+        <div>${character.getName()}</div>
       </div>
+    <div class="ff7 detailContent">
+      <div><span class="property">DEFENSE: </span>${JSON.stringify(
+        character.getJob().getBaseDefense(),
+        null,
+        2
+      )}</div>
+      <div><span class="property">CRITICAL: </span>${JSON.stringify(
+        character.getJob().getBaseCritic(),
+        null,
+        2
+      )}</div>
+
+      <div class="spells">
+        Spells
+        <div class="ff7 skillList">${drawSpells(character.getSpells())}</div>
+      </div>
+
+      <div class="skills">
+        Skills
+        <div class="ff7 skillList">${drawSkills(character.getSkills())}</div>
+      </div>
+
+      
+    </div>
+    </div>
+    <div class="buttonsForDetails">
+        <div class="ff7 closeDetail" onclick="closeModal()"> close </div>
+    </div>
   </div>`;
     divRosterElement.innerHTML += divCharacter;
     divDetailDisplay.innerHTML += divDetail;
   }
 
   localStorage.setItem("characters", JSON.stringify(rosterArray));
+};
+
+const drawSkills = (skills) => {
+  if (skills.length === 0) return "";
+  let auxDiv = "";
+  for (const skill of skills) {
+    auxDiv += `
+
+    <div class="ff7 skillTitle"> 
+      <span class="property"> ${skill.name}  </span> 
+    </div>
+    <div class="ff7 skillContent"> 
+      <div> <span class="property">Desc: </span> ${skill.desc} </div>
+      <div> <span class="property">DMG: </span> ${skill.dmg} </div>
+      <div> <span class="property">Cooldown: </span> ${skill.cooldown} </div>
+    </div>
+    
+    `;
+  }
+  console.log(auxDiv);
+  return auxDiv;
+};
+
+const drawSpells = (skills) => {
+  if (skills.length === 0) return "";
+  let auxDiv = "";
+  for (const spell of skills) {
+    if (spell.isForHeal) {
+      auxDiv += `
+
+      <div class="ff7 skillTitle"> 
+        <span class="property"> ${spell.name}  </span> 
+      </div>
+      <div class="ff7 skillContent"> 
+        <div> <span class="property">Desc: </span> ${spell.desc} </div>
+        <div> <span class="property">HEAL: </span> ${spell.dmg} </div>
+        <div> <span class="property">MP Cost: </span> ${spell.mpCost} </div>
+      </div>
+      
+      `;
+    } else {
+      auxDiv += `
+
+    <div class="ff7 skillTitle"> 
+      <span class="property"> ${spell.name}  </span> 
+    </div>
+    <div class="ff7 skillContent"> 
+      <div> <span class="property">Desc: </span> ${spell.desc} </div>
+      <div> <span class="property">DMG: </span> ${spell.dmg} </div>
+      <div> <span class="property">MP Cost: </span> ${spell.mpCost} </div>
+    </div>
+    
+    `;
+    }
+  }
+  console.log(auxDiv);
+  return auxDiv;
 };
 
 const loadMaps = (rawMaps) => {
