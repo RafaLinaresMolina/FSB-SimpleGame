@@ -34,7 +34,7 @@ divMainMenu.style.visibility = "hidden";
 export const getObjects = async () => {
   await sleep(2000);
   console.log("not saved");
-  const myBigBadObject = await fetch("./../json/bigbadobject.json");
+  const myBigBadObject = await fetch("../json/bigbadobject.json");
   return await myBigBadObject.json();
 };
 
