@@ -42,7 +42,8 @@ const selectMap = (mapId, valor) => {
 };
 
 const deSelectCharacter = (i, pos) => {
-  selectedArray.splice(pos);
+  selectedArray.splice(pos, 1);
+
   document.getElementById("selected" + i).remove();
   document.getElementById("character" + i).style.display = "flex";
 };
@@ -115,6 +116,7 @@ const drawNPCs = (mapId) => {
 
 const selectCharacter = (i) => {
   if (selectedArray.length < 3) {
+    console.log(selectedArray)
     const arrayRaw = localStorage.getItem("characters");
     const characters = JSON.parse(arrayRaw);
     const character = characters[i];
