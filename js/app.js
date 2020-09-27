@@ -27,7 +27,7 @@ divMainMenu.style.visibility = "hidden";
 
 export const getObjects = async () => {
   await sleep(2000);
-  const myBigBadObject = await fetch("https://rafalinaresmolina.github.io/FSB-SimpleGame/json/bigbadobject.json");
+  const myBigBadObject = await fetch("json/bigbadobject.json");
   return await myBigBadObject.json();
 };
 

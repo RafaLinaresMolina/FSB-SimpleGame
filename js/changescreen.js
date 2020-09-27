@@ -5,16 +5,18 @@ const selectedArray = [];
 const divDetailDisplay = document.getElementById("detailDisplay");
 divDetailDisplay.innerHTML = "";
 
+let terminal = document.getElementById('progressText');
+terminal.innerHTML = '';
 
+let mapArray;
+let enemyArray;
+let mapSelected;
 
-const elementNPC3 = document.getElementById("npc3");
-elementNPC3.innerHTML = "";
-
+const fightUpMessage = document.getElementById("fightMessage");
 
 const cambiaPantalla = (valor) => {
   let screen = "screen" + valor;
-
-  if(screen === "screen3" && !isFightable()){
+  if (screen === "screen3" && !isFightable()) {
     return false;
   }
 
@@ -28,11 +30,15 @@ const cambiaPantalla = (valor) => {
 };
 
 const selectMap = (mapId, valor) => {
-  const mapArray =  JSON.parse(localStorage.getItem("maps"));
+  mapSelected = mapId;
+  mapArray = JSON.parse(localStorage.getItem("maps"));
   const map = mapArray[mapId];
-  document.getElementById('fightVisuals').style.backgroundImage = `url(${map.img})`;
+  document.getElementById(
+    "fightVisuals"
+  ).style.backgroundImage = `url(${map.img})`;
   cambiaPantalla(valor);
   drawPlayers();
+  drawNPCs(mapId);
 };
 
 const deSelectCharacter = (i, pos) => {
@@ -47,25 +53,59 @@ const isFightable = () => {
 
 const drawPlayers = () => {
   for (const i in selectedArray) {
-    let elem = document.getElementById("ch"+(parseInt(i)+1));
-    console.log(selectedArray[i].imgGame);
-    elem.innerHTML = '';
+    let elem = document.getElementById("ch" + (parseInt(i) + 1));
+    elem.innerHTML = "";
     selectedArray[i];
     elem.innerHTML += `
-      <div class="stats" id="ch3Stat">
-        <div style="display: flex; flex-direction: row"> <span class="property">[${selectedArray[i].name}]</span> </div>
-        <div style="display: flex; flex-direction: row"> <span class="property">[HP] </span> ${selectedArray[i].hp} / ${selectedArray[i].initialHP}</div>
-        <div style="display: flex; flex-direction: row"> <span class="property">[MP] </span> ${selectedArray[i].mp} / ${selectedArray[i].initialMP}</div>
+      <div class="stats" id="ch${i + 1}Stat">
+        <div style="display: flex; flex-direction: row"> <span class="property">[${
+          selectedArray[i].name
+        }]</span> </div>
+        <div style="display: flex; flex-direction: row"> <span class="property">[HP] </span> ${
+          selectedArray[i].hp
+        } / ${selectedArray[i].initialHP}</div>
+        <div style="display: flex; flex-direction: row"> <span class="property">[MP] </span> ${
+          selectedArray[i].mp
+        } / ${selectedArray[i].initialMP}</div>
       </div>
-      <div class="charImg" id="ch3Img" style="background-image: url(${selectedArray[i].imgGame})">
+      <div class="charImg" id="ch${i + 1}Img" style="background-image: url(${
+      selectedArray[i].imgGame
+    })">
         <div style="display: flex; flex-direction: row"></div>
       </div>
-      <div class="charNum" id="ch3Numbers">
+      <div class="charNum" id="ch${i + 1}Numbers">
         <div style="display: flex; flex-direction: row"></div>
       </div>
     `;
   }
-}
+};
+
+const drawNPCs = (mapId) => {
+  enemyArray = mapArray[mapId].enemies;
+  for (const i in enemyArray) {
+    let elem = document.getElementById("npc" + (parseInt(i) + 1));
+    elem.innerHTML = "";
+    selectedArray[i];
+    elem.innerHTML += `
+      <div class="npcNum" id="npc${i + 1}Numbers">
+        <div style="display: flex; flex-direction: row; align-self: flex-end;"></div>
+      </div>
+      <div class="charImg" id="npc${i + 1}Img" style="background-image: url(${
+      enemyArray[i].imgGame
+    })">
+        <div style="display: flex; flex-direction: row"></div>
+      </div>
+      <div class="stats" id="npc${i + 1}Stat">
+        <div style="display: flex; flex-direction: row; align-self: flex-end;"> <span class="property">[${
+          enemyArray[i].name
+        }]</span> </div>
+        <div style="display: flex; flex-direction: row; align-self: flex-end;"> ${
+          enemyArray[i].hp
+        } / ${enemyArray[i].initialHP} <span class="property">[HP] </span></div>
+      </div>
+    `;
+  }
+};
 
 const selectCharacter = (i) => {
   if (selectedArray.length < 3) {
@@ -115,6 +155,120 @@ const selectCharacter = (i) => {
   }
 };
 
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+const min = 1;
+const max = 20;
+const tirarDado = () => Math.floor(Math.random() * (max - min + min)) + 1;
+
+const keepFighting = () => {
+  let charactersLifeLeft = 0;
+  let npcLifeLeft = 0;
+  for (const i in selectedArray) {
+    charactersLifeLeft += selectedArray[i].hp;
+  }
+  for (const i in enemyArray) {
+    npcLifeLeft += enemyArray[i].hp;
+  }
+
+  return npcLifeLeft <= 0 || charactersLifeLeft <= 0 ? false : true;
+};
+
+const fight = (whoStart) => {
+terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp; NEW TURN </span> <br>`;
+    
+  if (whoStart % 2 === 0) {
+      fightUpMessage.innerHTML = "Player Go";
+      playerMove();
+      npcMove();
+  } else {
+      fightUpMessage.innerHTML = "NPC Go";
+      npcMove();
+      playerMove();
+  }
+  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp; END OF TURN </span> <br>`;
+};
+
+const npcWithLessLife = () => {
+  let auxCharacter = enemyArray[0];
+  let pos = 0;
+  for(const i in enemyArray){
+    if(auxCharacter.hp > enemyArray[i].hp && enemyArray[i].hp > 0 ){
+      pos = i
+      auxCharacter = enemyArray[i]
+    }
+  }
+  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; NPC with low life ${auxCharacter.name} </span> <br>`;
+  return pos;
+}
+
+const chWithLessLife = () => {
+  let auxCharacter = selectedArray[0];
+  let pos = 0;
+  for(const i in selectedArray){
+    if(auxCharacter.hp > selectedArray[i].hp && selectedArray[i].hp > 0 ){
+      pos = i;
+      auxCharacter = selectedArray[i];
+    }
+  }
+  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; Character with low life ${auxCharacter.name} </span> <br>`;
+  return pos;
+}
+
+const calculateCritical = (crit, dmg) => {
+  const dado = tirarDado();
+  if (dado >= crit) {
+    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; CRITICAL! </span> <br>`;
+    return dmg * 2;
+  } else if (dado === 1) {
+    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; FAIL  </span> <br>`;
+    return 0;
+  } else {
+    return dmg;
+  }
+};
+
+const npcMove = () => {
+  for (const npc of enemyArray) {
+    if(npc.hp>0){
+      terminal.innerHTML += `<span class="npcText">  [${npc.name}] </span> <br>`;
+      const dmg = calculateCritical(npc.critic, npc.atk);
+      
+      let finalDamage;
+      let pos = chWithLessLife();
+      dmg - selectedArray[pos].def < 0 || dmg === 0 ? finalDamage = 0 : finalDamage = dmg - selectedArray[pos].def;
+      selectedArray[pos].hp -= finalDamage; 
+      terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${npc.name} atack with ${finalDamage} damage! </span> <br>`;
+      terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${selectedArray[pos].name} remain with ${selectedArray[pos].hp} HP </span> <br>`;
+
+      if(selectedArray[pos].hp <= 0)
+      selectedArray[pos].isDead = true; 
+    }
+      drawPlayers();
+  }
+}
+
+const playerMove = () => {
+  for (const ch of selectedArray) {
+    if(ch.hp > 0){
+      terminal.innerHTML += `<span class="chText"> [${ch.name}] </span> <br>`;
+      const dmg = calculateCritical(ch.critic, ch.atk);
+      let finalDamage;
+      let pos = npcWithLessLife();
+      dmg - selectedArray[pos].def < 0 || dmg === 0 ? finalDamage = 0 : finalDamage = dmg - selectedArray[pos].def;
+      enemyArray[pos].hp -= finalDamage; 
+
+      terminal.innerHTML += `<span class="chText"> &nbsp;&nbsp;&nbsp;&nbsp; ${ch.name} atack with ${finalDamage} damage! </span> <br>`;
+      terminal.innerHTML += `<span class="chText"> &nbsp;&nbsp;&nbsp;&nbsp; ${enemyArray[pos].name} remain with ${enemyArray[pos].hp} HP </span> <br>`;
+      
+      if(enemyArray[pos].hp <= 0)
+        enemyArray[pos].isDead = true;
+    }
+      drawNPCs(mapSelected);
+  }
+}
 
 const viewDetails = (valor) => {
   let detail = "detail" + valor;
@@ -126,10 +280,9 @@ const viewDetails = (valor) => {
     document.getElementById(pantalla).style.display = "none";
   }
 
-  divDetailDisplay.style.display = 'block';
-  
-}
+  divDetailDisplay.style.display = "block";
+};
 
 const closeModal = () => {
-  divDetailDisplay.style.display = 'none';
-}
+  divDetailDisplay.style.display = "none";
+};

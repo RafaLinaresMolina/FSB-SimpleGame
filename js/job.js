@@ -4,6 +4,7 @@ class Job {
     this.baseHP = obj.baseHP;
     this.baseMP = obj.baseMP ? obj.baseMP : 0;
     this.baseDef = obj.baseDef ? obj.baseDef : 0;
+    this.baseAtk = obj.baseAtk ? obj.baseAtk : 15;
     this.baseSkills = obj.baseSkills ? obj.baseSkills : 0;
     this.baseSpells = obj.baseSpells ? obj.baseSpells : [];
     this.baseCritic = obj.baseCritic ? obj.baseCritic : 20;
@@ -17,6 +18,8 @@ class Job {
   getBaseMP = () => this.baseMP;
   setBaseMP = (value) => this.baseMP = value;
   getBaseDefense = () => this.baseDef;
+  setBaseAtk = (value) => this.baseAtk = value;
+  getBaseAtk = () => this.baseAtk;
   
   setBaseDefense = (value) => this.baseDef = value;
   getBaseCritic = () => this.baseCritic;

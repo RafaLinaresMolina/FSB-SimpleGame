@@ -116,6 +116,7 @@
 }
 
 .button{
+    cursor: pointer;
     width: 10em;
     margin: 1em;
 }
@@ -125,4 +126,20 @@
     flex-direction: column;
     height: 9.6em;
     width: 100%;
+}
+
+.innerMenu{
+    overflow-y: scroll;
+}
+
+.npcText{
+    color: brown;
+}
+
+.chText{
+    color: aquamarine;
+}
+
+.auxText{
+    color: darkorange;
 }

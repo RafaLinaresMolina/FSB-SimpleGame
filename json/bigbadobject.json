@@ -65,6 +65,7 @@
       "name": "Black Mage",
       "job": {
         "name": "Mage",
+        "baseAtk": 30,
         "baseHP": 80,
         "baseMP": 200,
         "baseDef": 5,
@@ -79,6 +80,7 @@
       "name": "Zelot Crusader",
       "job": {
         "name": "Warrior",
+        "baseAtk": 30,
         "baseHP": 120,
         "baseMP": 0,
         "baseDef": 15,
@@ -92,6 +94,7 @@
       "name": "Assassin rogue",
       "job": {
         "name": "Rogue",
+        "baseAtk": 30,
         "baseHP": 90,
         "baseMP": 40,
         "baseDef": 20,
@@ -107,6 +110,7 @@
       "name": "Holy Vindicator",
       "job": {
         "name": "Paladin",
+        "baseAtk": 30,
         "baseHP": 100,
         "baseMP": 60,
         "baseDef": 10,
@@ -121,6 +125,7 @@
       "name": "Ranger Walker",
       "job": {
         "name": "Ranger",
+        "baseAtk": 30,
         "baseHP": 100,
         "baseDef": 10,
         "baseSkills": [{"name": "Rapid Shot", "desc": "You shot your arrows like a maniac.", "dmg": 15, "cooldown": 2}],
