@@ -22,6 +22,10 @@ const deSelectCharacter = (i, pos) => {
   document.getElementById("character" + i).style.display = "flex";
 };
 
+const isFightable = () => {
+  return selectedArray.length === 0 ? false : true;
+}
+
 const selectCharacter = (i) => {
   if (selectedArray.length < 3) {
     const arrayRaw = localStorage.getItem("characters");

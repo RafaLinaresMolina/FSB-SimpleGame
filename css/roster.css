@@ -131,6 +131,7 @@
 }
 
 .map {
+  z-index: 0;
   margin: 1em;
   filter: grayscale(100%);
   transition: .4s ease-in-out;
@@ -163,6 +164,7 @@
   width: 50%;
   top:5em;
   left:25em;
+  z-index: 2;
 }
 
 .display{
@@ -257,4 +259,8 @@
 .map:hover{
   filter: none;
   transition: .4s ease-in-out;
+}
+
+.unselectableText{
+  user-select: none;
 }
