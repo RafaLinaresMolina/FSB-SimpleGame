@@ -2,55 +2,55 @@
   "maps": [{
     "name": "Forgoten Tomb",
     "desc": "A treacherous den of undead and peril",
-    "img": "../img/map/map1.webp",
-    "bossImg": "../img/portraits/undead.png",
+    "img": "img/map/map1.webp",
+    "bossImg": "img/portraits/undead.png",
     "enemies": [{
       "name": "Undead warrior",
       "atk": 20,
       "hp": 150,
       "critic": 20,
-      "imgCard": "../img/portraits/mageCard.jpg",
+      "imgCard": "img/portraits/mageCard.jpg",
       "imgGame": ""
     },{
       "name": "Lord of the Grave",
       "atk": 20,
       "hp": 200,
       "critic": 18,
-      "imgCard": "../img/portraits/mageCard.jpg",
+      "imgCard": "img/portraits/mageCard.jpg",
       "imgGame": ""
     },{
       "name": "Undead wizard",
       "atk": 20,
       "hp": 100,
       "critic": 20,
-      "imgCard": "../img/portraits/mageCard.jpg",
+      "imgCard": "img/portraits/mageCard.jpg",
       "imgGame": ""
     }]
   }, {
     "name": "Hell",
     "desc": "House of demons and your certain death",
-    "img": "../img/map/hell.png",
-    "bossImg": "../img/portraits/demon1.png",
+    "img": "img/map/hell.png",
+    "bossImg": "img/portraits/demon1.png",
     "enemies": [{
       "name": "Lower demon",
       "atk": 40,
       "hp": 250,
       "critic": 18,
-      "imgCard": "../img/portraits/mageCard.jpg",
+      "imgCard": "img/portraits/mageCard.jpg",
       "imgGame": ""
     },{
       "name": "Asmodeus weakling",
       "atk": 50,
       "hp": 300,
       "critic": 15,
-      "imgCard": "../img/portraits/mageCard.jpg",
+      "imgCard": "img/portraits/mageCard.jpg",
       "imgGame": ""
     },{
       "name": "Lower demon",
       "atk": 40,
       "hp": 250,
       "critic": 18,
-      "imgCard": "../img/portraits/mageCard.jpg",
+      "imgCard": "img/portraits/mageCard.jpg",
       "imgGame": ""
     }]
   }],
@@ -66,7 +66,7 @@
         "baseSpells": [{"name": "Fireball", "desc": "You cast a huge amount of fire that burn a whole area.", "dmg": 50, "mpCost": 40, "isArea": true}, {"name": "Disintegrate", "desc": "You point your finguer and a green death ray shout from the tip dealing a huge amount of damage to one foe.", "dmg": 170, "mpCost": 150, "isArea": false}],
         "basicItems": [{"name": "Mana Potion", "desc": "Restore Magic", "isEquipable": false, "type": "consumable", "values": [0, 0, 40, 0, 0], "isInArea": false, "isMagical": true, "quantity": 2},{"name": "Mage Staf", "desc": "A plain wood staf, but magical", "isEquipable": true, "type": "weapon", "values": [10, 0, 0, 0, 0], "isInArea": false, "isMagical": true}]
       },
-      "imgCard": "../img/portraits/mageCard.jpg",
+      "imgCard": "img/portraits/mageCard.jpg",
       "imgGame": ""
     },
     {
@@ -79,7 +79,7 @@
         "baseSkills": [{"name": "ZELOT SMASH!", "desc": "The Zelot Crusader smash his foe with his fists.", "dmg": 25, "cooldown": 2},{"name": "Shield bash", "desc": "You hit with the shield yout oponent.", "dmg": 30, "cooldown": 3}],
         "basicItems": [{"name": "Big Heavy Sword", "desc": "Big Heavy Sword for slice enemies", "isEquipable": true, "type": "weapon", "values": [15, 0, 0, 0, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
       },
-      "imgCard": "../img/portraits/warriorCard.jpg",
+      "imgCard": "img/portraits/warriorCard.jpg",
       "imgGame": ""
     },
     {
@@ -94,7 +94,7 @@
         "basicItems": [{"name": "Poisonus Dagger", "desc": "Yep, do not lick it.", "isEquipable": true, "type": "weapon", "values": [0, 0, 0, 0, 0], "isInArea": false, "isMagical": true, "quantity": 1}],
         "baseCritic": 15
       },
-      "imgCard": "../img/portraits/rogeCard.jpg",
+      "imgCard": "img/portraits/rogeCard.jpg",
       "imgGame": ""
     },
     {
@@ -108,7 +108,7 @@
         "baseSpells": [{"name": "SMITE!", "desc": "You punish the evil foes!", "dmg": 50, "mpCost": 60, "isArea": false}, {"name": "Healing hands", "desc": "You heal an ally", "dmg": 40, "mpCost": 30, "isArea": false, "isForHeal": true}],
         "basicItems": [{"name": "Holy Armor", "desc": "A Holy armor that show your enemies your Holiness", "isEquipable": true, "type": "armor", "values": [0, 0, 0, 20, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
       },
-      "imgCard": "../img/portraits/paladinCard.jpg",
+      "imgCard": "img/portraits/paladinCard.jpg",
       "imgGame": ""
     },
     {
@@ -121,7 +121,7 @@
         "basicItems": [{"name": "Longbow", "desc": "A long bow", "isEquipable": true, "type": "weapon", "values": [10, 0, 0, 0, 0], "isInArea": false, "isMagical": false, "quantity": 1}],
         "baseCritic": 18
       },
-      "imgCard": "../img/portraits/rangerCard.jpg",
+      "imgCard": "img/portraits/rangerCard.jpg",
       "imgGame": ""
     }
   ]
