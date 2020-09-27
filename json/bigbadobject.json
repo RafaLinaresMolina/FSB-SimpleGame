@@ -105,7 +105,7 @@
         "baseMP": 60,
         "baseDef": 10,
         "baseSkills": [{"name": "Deus Vult", "desc": "You hit with your morningstar your evil foes.", "dmg": 20, "cooldown": 3}],
-        "baseSpells": [{"name": "SMITE!", "desc": "You punish the evil foes!", "dmg": 50, "mpCost": 60, "isArea": false}, {"name": "Healing hands", "desc": "You heal an ally", "dmg": 40, "mpCost": 0, "isArea": false, "isForHeal": true}],
+        "baseSpells": [{"name": "SMITE!", "desc": "You punish the evil foes!", "dmg": 50, "mpCost": 60, "isArea": false}, {"name": "Healing hands", "desc": "You heal an ally", "dmg": 40, "mpCost": 30, "isArea": false, "isForHeal": true}],
         "basicItems": [{"name": "Holy Armor", "desc": "A Holy armor that show your enemies your Holiness", "isEquipable": true, "type": "armor", "values": [0, 0, 0, 20, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
       },
       "imgCard": "../img/portraits/paladinCard.jpg",

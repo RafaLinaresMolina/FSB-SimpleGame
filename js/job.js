@@ -29,6 +29,9 @@ class Job {
   getBaseSkills = () => this.baseSkills;
   setBaseSkills = (value) => this.baseSkills = value;
 
+  getBasicItems = () => this.basicItems;
+  setBasicItems = (value) => this.basicItems = value;
+
   getSkillById = (pos) => this.baseSkills[pos];
   getAtackId = (pos) => this.baseAtacks[pos];
   getSpellById = (pos) => this.baseSpells[pos];

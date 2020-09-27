@@ -10,7 +10,7 @@ class Character {
     this.skills = this.job.getBaseSkills();
     this.spells = this.job.getBaseSpells();
     this.critic = this.job.getBaseCritic();
-
+    this.items = this.job.getBasicItems();
     this.imgCard = obj.imgCard ? obj.imgCard : '../img/portraits/default.jpg';
     this.imgGame = obj.imgGame ? obj.imgGame : '../img/portraits/default.jpg';
   }
@@ -25,6 +25,7 @@ class Character {
   getCritic = () => this.critic;
   getImgCard = () => this.imgCard;
   getImgGame = () => this.imgGame;
+  getItems = () => this.items;
 
   setName = (value) => (this.name = value);
   setJob = (value) => (this.job = value);
@@ -36,6 +37,7 @@ class Character {
   setCritic = (value) => (this.critic = value);
   setImgGame = (value) => this.imgCard = value;
   setImgGame = (value) => this.imgGame = value;
+  setItems = (value) => this.items = value;
 }
 
 export { Character };

@@ -34,7 +34,7 @@ divMainMenu.style.visibility = "hidden";
 export const getObjects = async () => {
   await sleep(2000);
   console.log("not saved");
-  const myBigBadObject = await fetch("../../json/bigbadobject.json");
+  const myBigBadObject = await fetch("./../json/bigbadobject.json");
   return await myBigBadObject.json();
 };
 
@@ -110,6 +110,10 @@ const loadRoster = (rawCharacters) => {
         <div class="ff7 skillList">${drawSkills(character.getSkills())}</div>
       </div>
 
+      <div class="items">
+        Items
+        <div class="ff7 skillList">${drawItems(character.getItems())}</div>
+      </div>
       
     </div>
     </div>
@@ -119,6 +123,7 @@ const loadRoster = (rawCharacters) => {
   </div>`;
     divRosterElement.innerHTML += divCharacter;
     divDetailDisplay.innerHTML += divDetail;
+    console.log(character.getItems())
   }
 
   localStorage.setItem("characters", JSON.stringify(rosterArray));
@@ -133,7 +138,7 @@ const drawSkills = (skills) => {
     <div class="ff7 skillTitle"> 
       <span class="property"> ${skill.name}  </span> 
     </div>
-    <div class="ff7 skillContent"> 
+    <div class="skillContent"> 
       <div> <span class="property">Desc: </span> ${skill.desc} </div>
       <div> <span class="property">DMG: </span> ${skill.dmg} </div>
       <div> <span class="property">Cooldown: </span> ${skill.cooldown} </div>
@@ -141,7 +146,6 @@ const drawSkills = (skills) => {
     
     `;
   }
-  console.log(auxDiv);
   return auxDiv;
 };
 
@@ -149,37 +153,56 @@ const drawSpells = (skills) => {
   if (skills.length === 0) return "";
   let auxDiv = "";
   for (const spell of skills) {
-    if (spell.isForHeal) {
-      auxDiv += `
+    auxDiv += `
 
       <div class="ff7 skillTitle"> 
         <span class="property"> ${spell.name}  </span> 
       </div>
-      <div class="ff7 skillContent"> 
+      <div class="skillContent"> 
         <div> <span class="property">Desc: </span> ${spell.desc} </div>
-        <div> <span class="property">HEAL: </span> ${spell.dmg} </div>
+        <div> <span class="property"> ${
+          spell.isForHeal ? " HEAL:" : "DMG:"
+        }
+        </span> ${spell.dmg} </div>
         <div> <span class="property">MP Cost: </span> ${spell.mpCost} </div>
       </div>
-      
       `;
-    } else {
-      auxDiv += `
+  }
+  return auxDiv;
+};
 
-    <div class="ff7 skillTitle"> 
-      <span class="property"> ${spell.name}  </span> 
-    </div>
-    <div class="ff7 skillContent"> 
-      <div> <span class="property">Desc: </span> ${spell.desc} </div>
-      <div> <span class="property">DMG: </span> ${spell.dmg} </div>
-      <div> <span class="property">MP Cost: </span> ${spell.mpCost} </div>
-    </div>
-    
-    `;
-    }
+const drawItems = (items) => {
+  
+  if (items.length === 0) return "";
+  let auxDiv = "";
+  for (const item of items) {
+    auxDiv += `
+
+      <div class="ff7 skillTitle"> 
+        <span class="property"> ${item.name}  </span> 
+      </div>
+      <div class="skillContent"> 
+        <div> <span class="property">Desc: </span> ${item.desc} </div>
+        <div> <span class="property"> Type: </span> ${item.type} ${item.isEquipable ? " [EQUIPED]" : ` [${item.quantity}]`} </div>
+        <div> ${drawIncreasesOfItem(item.values)} </div>
+      </div>
+      `;
   }
   console.log(auxDiv);
   return auxDiv;
 };
+
+const drawIncreasesOfItem = (stats) => {
+  let string = ``;
+  //DMG    HP     MP    DEF     CRIT 
+  stats[0] !== 0 ? string+= `[<span class="property">DMG: </span> ${stats[0]}]` : ``;
+  stats[1] !== 0 ? string+= `[<span class="property">HP: </span> ${stats[1]}]` : ``;
+  stats[2] !== 0 ? string+= `[<span class="property">MP: </span> ${stats[2]}]` : ``;
+  stats[3] !== 0 ? string+= `[<span class="property">DEF: </span> ${stats[3]}]` : ``;
+  stats[4] !== 0 ? string+= `[<span class="property">CRIT: </span> ${stats[4]}]` : ``;
+  return string;
+}
+
 
 const loadMaps = (rawMaps) => {
   for (const i in rawMaps) {
@@ -202,6 +225,7 @@ const loadMaps = (rawMaps) => {
 
   localStorage.setItem("characters", JSON.stringify(rosterArray));
 };
+
 
 getObjects()
   .then((res) => {
