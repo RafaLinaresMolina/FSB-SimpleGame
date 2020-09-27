@@ -18,7 +18,6 @@ divMapElement.innerHTML = "";
 
 divScreen2.style.display = "none";
 divScreen3.style.display = "none";
-divScreen4.style.display = "none";
 
 const h1Loading = document.getElementById("loadingMessage");
 const divMainMenu = document.getElementById("mainMenu");
