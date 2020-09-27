@@ -7,7 +7,6 @@ const divScreen1 = document.getElementById("screen1");
 const divScreen2 = document.getElementById("screen2");
 const divScreen3 = document.getElementById("screen3");
 const divScreen4 = document.getElementById("screen4");
-const divScreen5 = document.getElementById("screen5");
 const rosterArray = [];
 const mapArray = [];
 
@@ -20,7 +19,6 @@ divMapElement.innerHTML = "";
 divScreen2.style.display = "none";
 divScreen3.style.display = "none";
 divScreen4.style.display = "none";
-divScreen5.style.display = "none";
 
 const h1Loading = document.getElementById("loadingMessage");
 const divMainMenu = document.getElementById("mainMenu");

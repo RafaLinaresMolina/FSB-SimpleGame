@@ -132,6 +132,8 @@
 
 .map {
   margin: 1em;
+  filter: grayscale(100%);
+  transition: .4s ease-in-out;
 }
 
 .map .image {
@@ -250,4 +252,9 @@
   margin: 1em;
   display: flex;
   flex-direction: column;
+}
+
+.map:hover{
+  filter: none;
+  transition: .4s ease-in-out;
 }
