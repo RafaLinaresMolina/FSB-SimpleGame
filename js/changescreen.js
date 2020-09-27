@@ -195,6 +195,7 @@ const npcWithLessLife = () => {
   let auxCharacter = enemyArray[0];
   let pos = 0;
   for(const i in enemyArray){
+    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; NPC ${enemyArray[i].name} : ${enemyArray[i].hp} HP </span> <br>`;
     if(auxCharacter.hp > enemyArray[i].hp && enemyArray[i].hp > 0 ){
       pos = i
       auxCharacter = enemyArray[i]
@@ -208,9 +209,13 @@ const chWithLessLife = () => {
   let auxCharacter = selectedArray[0];
   let pos = 0;
   for(const i in selectedArray){
-    if(auxCharacter.hp > selectedArray[i].hp && selectedArray[i].hp > 0 ){
-      pos = i;
-      auxCharacter = selectedArray[i];
+    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; CH   ${selectedArray[i].name} : ${selectedArray[i].hp} HP </span> <br>`;
+    if(auxCharacter.hp > selectedArray[i].hp){
+      if(selectedArray[i].hp > 0 ){
+        pos = i;
+        auxCharacter = selectedArray[i];
+      }
+      
     }
   }
   terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; Character with low life ${auxCharacter.name} </span> <br>`;
@@ -238,8 +243,12 @@ const npcMove = () => {
       
       let finalDamage;
       let pos = chWithLessLife();
-      dmg - selectedArray[pos].def < 0 || dmg === 0 ? finalDamage = 0 : finalDamage = dmg - selectedArray[pos].def;
+      finalDamage = dmg - selectedArray[pos].def < 0 || dmg === 0 ? 0 : dmg - selectedArray[pos].def;
+      
+      terminal.innerHTML += `<span class="auxText"> &nbsp;&nbsp;&nbsp;&nbsp; ATK: ${dmg} vs DEF:${selectedArray[pos].def} = DMG: ${finalDamage} </span> <br>`;
+      
       selectedArray[pos].hp -= finalDamage; 
+      
       terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${npc.name} atack with ${finalDamage} damage! </span> <br>`;
       terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${selectedArray[pos].name} remain with ${selectedArray[pos].hp} HP </span> <br>`;
 
@@ -257,9 +266,9 @@ const playerMove = () => {
       const dmg = calculateCritical(ch.critic, ch.atk);
       let finalDamage;
       let pos = npcWithLessLife();
-      dmg - selectedArray[pos].def < 0 || dmg === 0 ? finalDamage = 0 : finalDamage = dmg - selectedArray[pos].def;
+      finalDamage = dmg - enemyArray[pos].def < 0 || dmg === 0 ? 0 : (dmg - enemyArray[pos].def);
+      terminal.innerHTML += `<span class="auxText"> &nbsp;&nbsp;&nbsp;&nbsp; ATK: ${dmg} vs DEF:${enemyArray[pos].def} = DMG: ${finalDamage} </span> <br>`;
       enemyArray[pos].hp -= finalDamage; 
-
       terminal.innerHTML += `<span class="chText"> &nbsp;&nbsp;&nbsp;&nbsp; ${ch.name} atack with ${finalDamage} damage! </span> <br>`;
       terminal.innerHTML += `<span class="chText"> &nbsp;&nbsp;&nbsp;&nbsp; ${enemyArray[pos].name} remain with ${enemyArray[pos].hp} HP </span> <br>`;
       

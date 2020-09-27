@@ -10,6 +10,7 @@
       "hp": 150,
       "initialHP": 150,
       "critic": 20,
+      "def": 5,
       "imgCard": "img/portraits/undead-warrior.jpg",
       "imgGame": "img/portraits/undead-warrior.jpg"
     },{
@@ -18,6 +19,7 @@
       "hp": 200,
       "initialHP": 200,
       "critic": 18,
+      "def": 5,
       "imgCard": "img/portraits/undead.png",
       "imgGame": "img/portraits/undead.png"
     },{
@@ -26,6 +28,7 @@
       "hp": 100,
       "initialHP": 100,
       "critic": 20,
+      "def": 5,
       "imgCard": "img/portraits/undead-mage.jpg",
       "imgGame": "img/portraits/undead-mage.jpg"
     }]
@@ -40,6 +43,7 @@
       "hp": 250,
       "initialHP": 250,
       "critic": 18,
+      "def": 5,
       "imgCard": "img/portraits/demon-warrior.jpg",
       "imgGame": "img/portraits/demon-warrior.jpg"
     },{
@@ -48,6 +52,7 @@
       "hp": 300,
       "initialHP": 300,
       "critic": 15,
+      "def": 5,
       "imgCard": "img/portraits/demon-boss.jpg",
       "imgGame": "img/portraits/demon-boss.jpg"
     },{
@@ -56,6 +61,7 @@
       "hp": 250,
       "initialHP": 250,
       "critic": 18,
+      "def": 5,
       "imgCard": "img/portraits/demon-mage.jpg",
       "imgGame": "img/portraits/demon-mage.jpg"
     }]
