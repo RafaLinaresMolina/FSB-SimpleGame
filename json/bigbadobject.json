@@ -18,8 +18,8 @@
       "hp": 200,
       "initialHP": 200,
       "critic": 18,
-      "imgCard": "img/portraits/undead.jpg",
-      "imgGame": "img/portraits/undead.jpg"
+      "imgCard": "img/portraits/undead.png",
+      "imgGame": "img/portraits/undead.png"
     },{
       "name": "Undead wizard",
       "atk": 20,
