@@ -5,8 +5,8 @@ const selectedArray = [];
 const divDetailDisplay = document.getElementById("detailDisplay");
 divDetailDisplay.innerHTML = "";
 
-let terminal = document.getElementById('progressText');
-terminal.innerHTML = '';
+let terminal = document.getElementById("progressText");
+terminal.innerHTML = "";
 
 let mapArray;
 let enemyArray;
@@ -20,7 +20,7 @@ const cambiaPantalla = (valor) => {
     return false;
   }
 
-  let arrayFases = ["screen1", "screen2", "screen3", "screen4"];
+  let arrayFases = ["screen1", "screen2", "screen3"];
   arrayFases = arrayFases.filter((val) => !screen.includes(val));
 
   document.getElementById(screen).style.display = "block";
@@ -61,6 +61,9 @@ const drawPlayers = () => {
         <div style="display: flex; flex-direction: row"> <span class="property">[${
           selectedArray[i].name
         }]</span> </div>
+        <div style="display: flex; flex-direction: row"> <span class="property">LVL:</span> ${
+          selectedArray[i].lvl
+        } </div>
         <div style="display: flex; flex-direction: row"> <span class="property">[HP] </span> ${
           selectedArray[i].hp
         } / ${selectedArray[i].initialHP}</div>
@@ -99,6 +102,9 @@ const drawNPCs = (mapId) => {
         <div style="display: flex; flex-direction: row; align-self: flex-end;"> <span class="property">[${
           enemyArray[i].name
         }]</span> </div>
+        <div style="display: flex; flex-direction: row; align-self: flex-end;"> <span class="property">LVL: </span> ${
+          enemyArray[i].lvl
+        } </div>
         <div style="display: flex; flex-direction: row; align-self: flex-end;"> ${
           enemyArray[i].hp
         } / ${enemyArray[i].initialHP} <span class="property">[HP] </span></div>
@@ -167,60 +173,73 @@ const keepFighting = () => {
   let charactersLifeLeft = 0;
   let npcLifeLeft = 0;
   for (const i in selectedArray) {
-    charactersLifeLeft += selectedArray[i].hp;
+    charactersLifeLeft += selectedArray[i].hp > 0 ? selectedArray[i].hp : 0;
   }
   for (const i in enemyArray) {
-    npcLifeLeft += enemyArray[i].hp;
+    npcLifeLeft += enemyArray[i].hp > 0 ? enemyArray[i].hp : 0;
   }
+  const keepGoing = npcLifeLeft > 0 && charactersLifeLeft > 0;
 
-  return npcLifeLeft <= 0 || charactersLifeLeft <= 0 ? false : true;
+  terminal.innerHTML += `<span class="auxText2">  &nbsp;&nbsp;&nbsp;&nbsp;Players pool Life: ${charactersLifeLeft} | NPC pool Life: ${npcLifeLeft} </span> <br>`;
+  
+  if(!keepGoing){
+    document.getElementById('modalEndgame').style.display = 'block';
+    console.log('asd')
+    if(charactersLifeLeft > 0){
+      document.getElementById('modalFightTitle').innerHTML = 'YOU WIN !';
+    }else{
+      document.getElementById('modalFightTitle').innerHTML = 'You lose...';
+    }
+    
+    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp; - THE END - </span> <br>`;
+  }
+  
+  return keepGoing ? true : false;
 };
 
 const fight = (whoStart) => {
-terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp; NEW TURN </span> <br>`;
-    
-  if (whoStart % 2 === 0) {
-      fightUpMessage.innerHTML = "Player Go";
+  
+  if (keepFighting()) {
+    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp; NEW TURN </span> <br>`;
+    if (whoStart % 2 === 0) {
       playerMove();
       npcMove();
-  } else {
-      fightUpMessage.innerHTML = "NPC Go";
+    } else {
       npcMove();
       playerMove();
-  }
-  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp; END OF TURN </span> <br>`;
+    }
+  } 
+  keepFighting();
 };
 
 const npcWithLessLife = () => {
   let auxCharacter = enemyArray[0];
   let pos = 0;
-  for(const i in enemyArray){
+  for (const i in enemyArray) {
     terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; NPC ${enemyArray[i].name} : ${enemyArray[i].hp} HP </span> <br>`;
-    if(auxCharacter.hp > enemyArray[i].hp && enemyArray[i].hp > 0 ){
-      pos = i
-      auxCharacter = enemyArray[i]
+    if (!enemyArray[i].isDead && auxCharacter.hp < enemyArray[i].hp) {
+      pos = i;
+      auxCharacter = enemyArray[i];
     }
   }
-  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; NPC with low life ${auxCharacter.name} </span> <br>`;
+
+  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; NPC with higer life ${auxCharacter.name} </span> <br>`;
   return pos;
-}
+};
 
 const chWithLessLife = () => {
   let auxCharacter = selectedArray[0];
   let pos = 0;
-  for(const i in selectedArray){
+  for (const i in selectedArray) {
     terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; CH   ${selectedArray[i].name} : ${selectedArray[i].hp} HP </span> <br>`;
-    if(auxCharacter.hp > selectedArray[i].hp){
-      if(selectedArray[i].hp > 0 ){
-        pos = i;
-        auxCharacter = selectedArray[i];
-      }
-      
+    if (!selectedArray[i].isDead && auxCharacter.hp < selectedArray[i].hp) {
+      pos = i;
+      auxCharacter = selectedArray[i];
     }
   }
-  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; Character with low life ${auxCharacter.name} </span> <br>`;
+  terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; Character with higer life ${auxCharacter.name} </span> <br>`;
   return pos;
-}
+};
 
 const calculateCritical = (crit, dmg) => {
   const dado = tirarDado();
@@ -228,7 +247,7 @@ const calculateCritical = (crit, dmg) => {
     terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; CRITICAL! </span> <br>`;
     return dmg * 2;
   } else if (dado === 1) {
-    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; FAIL  </span> <br>`;
+    terminal.innerHTML += `<span class="auxText">  &nbsp;&nbsp;&nbsp; MISS  </span> <br>`;
     return 0;
   } else {
     return dmg;
@@ -237,47 +256,57 @@ const calculateCritical = (crit, dmg) => {
 
 const npcMove = () => {
   for (const npc of enemyArray) {
-    if(npc.hp>0){
+    if (npc.hp > 0) {
       terminal.innerHTML += `<span class="npcText">  [${npc.name}] </span> <br>`;
       const dmg = calculateCritical(npc.critic, npc.atk);
-      
+
       let finalDamage;
       let pos = chWithLessLife();
-      finalDamage = dmg - selectedArray[pos].def < 0 || dmg === 0 ? 0 : dmg - selectedArray[pos].def;
-      
-      terminal.innerHTML += `<span class="auxText"> &nbsp;&nbsp;&nbsp;&nbsp; ATK: ${dmg} vs DEF:${selectedArray[pos].def} = DMG: ${finalDamage} </span> <br>`;
-      
-      selectedArray[pos].hp -= finalDamage; 
-      
-      terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${npc.name} atack with ${finalDamage} damage! </span> <br>`;
-      terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${selectedArray[pos].name} remain with ${selectedArray[pos].hp} HP </span> <br>`;
 
-      if(selectedArray[pos].hp <= 0)
-      selectedArray[pos].isDead = true; 
+      finalDamage =
+        dmg - selectedArray[pos].def < 0 || dmg === 0
+          ? 0
+          : dmg - selectedArray[pos].def;
+
+      terminal.innerHTML += `<span class="auxText"> &nbsp;&nbsp;&nbsp;&nbsp; ATK: ${dmg} vs DEF:${selectedArray[pos].def} = DMG: ${finalDamage} </span> <br>`;
+
+      selectedArray[pos].hp -= finalDamage;
+
+      terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${npc.name} atack with ${finalDamage} damage! </span> <br>`;
+      terminal.innerHTML += `<span class="npcText"> &nbsp;&nbsp;&nbsp;&nbsp; ${selectedArray[pos].name} have ${selectedArray[pos].hp} HP </span> <br>`;
+
+      if (selectedArray[pos].hp <= 0) {
+        selectedArray[pos].isDead = true;
+      }
     }
-      drawPlayers();
+    drawPlayers();
   }
-}
+};
 
 const playerMove = () => {
   for (const ch of selectedArray) {
-    if(ch.hp > 0){
+    if (ch.hp > 0) {
       terminal.innerHTML += `<span class="chText"> [${ch.name}] </span> <br>`;
       const dmg = calculateCritical(ch.critic, ch.atk);
       let finalDamage;
       let pos = npcWithLessLife();
-      finalDamage = dmg - enemyArray[pos].def < 0 || dmg === 0 ? 0 : (dmg - enemyArray[pos].def);
+
+      finalDamage =
+        dmg - enemyArray[pos].def < 0 || dmg === 0
+          ? 0
+          : dmg - enemyArray[pos].def;
       terminal.innerHTML += `<span class="auxText"> &nbsp;&nbsp;&nbsp;&nbsp; ATK: ${dmg} vs DEF:${enemyArray[pos].def} = DMG: ${finalDamage} </span> <br>`;
-      enemyArray[pos].hp -= finalDamage; 
+      enemyArray[pos].hp -= finalDamage;
       terminal.innerHTML += `<span class="chText"> &nbsp;&nbsp;&nbsp;&nbsp; ${ch.name} atack with ${finalDamage} damage! </span> <br>`;
       terminal.innerHTML += `<span class="chText"> &nbsp;&nbsp;&nbsp;&nbsp; ${enemyArray[pos].name} remain with ${enemyArray[pos].hp} HP </span> <br>`;
-      
-      if(enemyArray[pos].hp <= 0)
+
+      if (enemyArray[pos].hp <= 0) {
         enemyArray[pos].isDead = true;
+      }
     }
-      drawNPCs(mapSelected);
+    drawNPCs(mapSelected);
   }
-}
+};
 
 const viewDetails = (valor) => {
   let detail = "detail" + valor;
@@ -295,3 +324,8 @@ const viewDetails = (valor) => {
 const closeModal = () => {
   divDetailDisplay.style.display = "none";
 };
+
+
+const refresh = () => {
+  location.reload(); 
+}

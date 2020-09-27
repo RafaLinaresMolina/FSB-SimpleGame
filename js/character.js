@@ -14,6 +14,7 @@ class Character {
     this.critic = this.job.getBaseCritic();
     this.items = this.job.getBasicItems();
     this.atk = this.job.getBaseAtk();
+    this.lvl = obj.lvl? obj.lvl : 1;
     this.imgCard = obj.imgCard ? obj.imgCard : '../img/portraits/default.jpg';
     this.imgGame = obj.imgGame ? obj.imgGame : '../img/portraits/default.jpg';
   }

@@ -92,9 +92,7 @@
     </div>
     <div class="container fight unselectableText" id="screen3">
       <div id="fightVisuals">
-        <div class="ff7 messageInfo">
-          <h1 id="fightMessage"></h1>
-        </div>
+        
         <div class="fighters ff7text">
           <div class="good">
             <div class="charcontainer" id="ch3">
@@ -169,14 +167,18 @@
         </div>
       </div>
       <div class="ff7 controls" id="fightControls">
+        <div id="modalEndgame" class="ff7 modalEndGame" style="display: none;">
+          <div class="modalTitle" id="modalFightTitle"> YOU WIN !</div>
+          <div class="ff7 reset" onclick="refresh()"> restart </div>
+        </div>
         <div class="ff7 controlPanel">
           <div class="controlRow">
-            <div class="ff7 atack button" onclick="fight(2)">Atack</div>
-            <div class="ff7 skill button">Skill</div>
+            <div id="atackbtn" class="ff7 button" onclick="fight(2)">Atack</div>
+            <div class="ff7 button">Skill</div>
           </div>
           <div class="controlRow">
-            <div class="ff7 Magic button">Magic</div>
-            <div class="ff7 Items button">Items</div>
+            <div class="ff7 button">Magic</div>
+            <div class="ff7 button">Items</div>
           </div>
         </div>
         <div class="ff7 innerMenu" id="progressText">
@@ -184,9 +186,6 @@
         </div>
       </div>
       
-    </div>
-    <div class="container ending" id="screen4">
-      <h1>TOTAL RESULT</h1>
     </div>
   </body>
 </html>

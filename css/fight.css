@@ -33,7 +33,7 @@
 .fighters{
     display: flex;
     flex-direction: row;
-    height: 39.5em;
+    height: 40em;
 }
 
 .good{
@@ -88,13 +88,7 @@
 }
 
 
-.ff7text disabled{
-    color: #585858;
-    text-shadow: 2px 2px #212421,
-                 1px 1px #212021;
-    font-family: Verdana, sans-serif;
-    font-weight: normal;
-}
+
 
 .controls{
     display: flex;
@@ -142,4 +136,35 @@
 
 .auxText{
     color: darkorange;
+}
+
+.auxText2{
+    color: rgb(123, 255, 0);
+}
+
+.modalEndGame{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 5%;
+    left: 42%;
+    z-index: 6;
+    width: 10em;
+    height: 10em;
+}
+
+.modalTitle{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.reset{
+    margin-top: 3em;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
 }
