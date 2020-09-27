@@ -8,23 +8,26 @@
       "name": "Undead warrior",
       "atk": 20,
       "hp": 150,
+      "initialHP": 150,
       "critic": 20,
-      "imgCard": "img/portraits/mageCard.jpg",
-      "imgGame": ""
+      "imgCard": "img/portraits/undead-warrior.jpg",
+      "imgGame": "img/portraits/undead-warrior.jpg"
     },{
       "name": "Lord of the Grave",
       "atk": 20,
       "hp": 200,
+      "initialHP": 200,
       "critic": 18,
-      "imgCard": "img/portraits/mageCard.jpg",
-      "imgGame": ""
+      "imgCard": "img/portraits/undead.jpg",
+      "imgGame": "img/portraits/undead.jpg"
     },{
       "name": "Undead wizard",
       "atk": 20,
       "hp": 100,
+      "initialHP": 100,
       "critic": 20,
-      "imgCard": "img/portraits/mageCard.jpg",
-      "imgGame": ""
+      "imgCard": "img/portraits/undead-mage.jpg",
+      "imgGame": "img/portraits/undead-mage.jpg"
     }]
   }, {
     "name": "Hell",
@@ -35,23 +38,26 @@
       "name": "Lower demon",
       "atk": 40,
       "hp": 250,
+      "initialHP": 250,
       "critic": 18,
-      "imgCard": "img/portraits/mageCard.jpg",
-      "imgGame": ""
+      "imgCard": "img/portraits/demon-warrior.jpg",
+      "imgGame": "img/portraits/demon-warrior.jpg"
     },{
       "name": "Asmodeus weakling",
       "atk": 50,
       "hp": 300,
+      "initialHP": 300,
       "critic": 15,
-      "imgCard": "img/portraits/mageCard.jpg",
-      "imgGame": ""
+      "imgCard": "img/portraits/demon-boss.jpg",
+      "imgGame": "img/portraits/demon-boss.jpg"
     },{
       "name": "Lower demon",
       "atk": 40,
       "hp": 250,
+      "initialHP": 250,
       "critic": 18,
-      "imgCard": "img/portraits/mageCard.jpg",
-      "imgGame": ""
+      "imgCard": "img/portraits/demon-mage.jpg",
+      "imgGame": "img/portraits/demon-mage.jpg"
     }]
   }],
   "characters": [
