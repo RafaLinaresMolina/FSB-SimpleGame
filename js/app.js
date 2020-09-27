@@ -11,10 +11,6 @@ const divScreen5 = document.getElementById("screen5");
 const rosterArray = [];
 const mapArray = [];
 
-export const selectCharacter = (i) => {
-  console.log(rosterArray[i].getName());
-};
-
 const divRosterElement = document.getElementById("roster");
 divRosterElement.innerHTML = "";
 
@@ -33,7 +29,6 @@ divMainMenu.style.visibility = "hidden";
 
 export const getObjects = async () => {
   await sleep(2000);
-  console.log("not saved");
   const myBigBadObject = await fetch("https://rafalinaresmolina.github.io/FSB-SimpleGame/json/bigbadobject.json");
   return await myBigBadObject.json();
 };
@@ -123,7 +118,6 @@ const loadRoster = (rawCharacters) => {
   </div>`;
     divRosterElement.innerHTML += divCharacter;
     divDetailDisplay.innerHTML += divDetail;
-    console.log(character.getItems())
   }
 
   localStorage.setItem("characters", JSON.stringify(rosterArray));
@@ -188,7 +182,6 @@ const drawItems = (items) => {
       </div>
       `;
   }
-  console.log(auxDiv);
   return auxDiv;
 };
 
@@ -231,13 +224,11 @@ getObjects()
   .then((res) => {
     h1Loading.innerHTML = `LOAD COMPLETE`;
     divMainMenu.style.visibility = "visible";
-    console.log(res["characters"]);
     loadRoster(res["characters"]);
     loadMaps(res["maps"]);
 
     // Logic here
   })
   .catch((err) => {
-    console.log(err);
     h1Loading.innerHTML = `LOAD FAILED`;
   });

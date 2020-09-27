@@ -27,14 +27,14 @@ class Item {
     if (validTypes.includes(value)) {
       this.type = value;
     } else {
-      console.log(`The type ${value} does not exist`);
+      this.type = 'consumable';
     }
   };
   getValues = () => this.values;
   getValueByPosition = (pos) =>
     this.values[pos]
       ? this.values[pos]
-      : console.log(`The position ${pos} does not exist`);
+      : 0;
 
   setValues = (values) => this.values = values;
   setIsInArea = (value) => this.isInArea = value;

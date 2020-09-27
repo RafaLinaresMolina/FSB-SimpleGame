@@ -6,9 +6,8 @@ const divDetailDisplay = document.getElementById("detailDisplay");
 divDetailDisplay.innerHTML = "";
 
 const cambiaPantalla = (valor) => {
-  console.log(valor);
   let screen = "screen" + valor;
-  let arrayFases = ["screen1", "screen2", "screen3", "screen4", "screen5"];
+  let arrayFases = ["screen1", "screen2", "screen3", "screen4"];
   arrayFases = arrayFases.filter((val) => !screen.includes(val));
 
   document.getElementById(screen).style.display = "block";
@@ -18,7 +17,6 @@ const cambiaPantalla = (valor) => {
 };
 
 const deSelectCharacter = (i, pos) => {
-  console.log(i, pos);
   selectedArray.splice(pos);
   document.getElementById("selected" + i).remove();
   document.getElementById("character" + i).style.display = "flex";
@@ -30,7 +28,6 @@ const selectCharacter = (i) => {
     const characters = JSON.parse(arrayRaw);
     const character = characters[i];
     selectedArray.push(character);
-    console.log(selectedArray.length - 1);
     const divCharacter = `
       <div class="ff7 character" id="selected${i}" onclick="deSelectCharacter(${i},${
       selectedArray.length - 1
@@ -69,14 +66,12 @@ const selectCharacter = (i) => {
 
     document.getElementById("character" + i).style.display = "none";
     divSelectedElement.innerHTML += divCharacter;
-    console.log(selectedArray);
     return character;
   }
 };
 
 
 const viewDetails = (valor) => {
-  console.log(valor);
   let detail = "detail" + valor;
   let arrayDetail = ["detail0", "detail1", "detail2", "detail3", "detail4"];
   arrayDetail = arrayDetail.filter((val) => !detail.includes(val));

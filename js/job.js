@@ -41,7 +41,7 @@ class Job {
     if (this.getJob().getBaseMP() > 0 && isSpellDoable(pos)) {
       return getSpellById(pos).getDmg();
     } else {
-      console.log(`Can't cast Magic.`);
+      return false;
     }
   };
 }
