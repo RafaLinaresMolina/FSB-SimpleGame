@@ -6,6 +6,8 @@ class Character {
     this.job = new Job(obj.job);
     this.hp = this.job.getBaseHP();
     this.mp = this.job.getBaseMP();
+    this.initialHP = this.hp;
+    this.initialMP = this.mp;
     this.def = this.job.getBaseDefense();
     this.skills = this.job.getBaseSkills();
     this.spells = this.job.getBaseSpells();
@@ -26,6 +28,8 @@ class Character {
   getImgCard = () => this.imgCard;
   getImgGame = () => this.imgGame;
   getItems = () => this.items;
+  getInitialHP = () => this.initialHP;
+  getInitialMP = () => this.initialMP;
 
   setName = (value) => (this.name = value);
   setJob = (value) => (this.job = value);
@@ -38,6 +42,8 @@ class Character {
   setImgGame = (value) => this.imgCard = value;
   setImgGame = (value) => this.imgGame = value;
   setItems = (value) => this.items = value;
+  setInitialHP = (value) => this.initialHP = value;
+  setInitialMP = (value) => this.initialMP = value;
 }
 
 export { Character };

@@ -200,7 +200,7 @@ const loadMaps = (rawMaps) => {
     const map = rawMaps[i];
     mapArray.push(map);
     const divMap = `
-    <div class="ff7 map" id="map${i}" style="background-image: url(${map.img})" onclick="cambiaPantalla('3')">
+    <div class="ff7 map" id="map${i}" style="background-image: url(${map.img})" onclick="selectMap(${i},'3')">
             <div class="rosterCard">
               <div class="image" style="background-image: url('${map.bossImg}'); background-color: black;"></div>
             </div>
@@ -213,8 +213,7 @@ const loadMaps = (rawMaps) => {
           </div>`;
     divMapElement.innerHTML += divMap;
   }
-
-  localStorage.setItem("characters", JSON.stringify(rosterArray));
+  localStorage.setItem("maps", JSON.stringify(mapArray));
 };
 
 

@@ -67,7 +67,7 @@
         "basicItems": [{"name": "Mana Potion", "desc": "Restore Magic", "isEquipable": false, "type": "consumable", "values": [0, 0, 40, 0, 0], "isInArea": false, "isMagical": true, "quantity": 2},{"name": "Mage Staf", "desc": "A plain wood staf, but magical", "isEquipable": true, "type": "weapon", "values": [10, 0, 0, 0, 0], "isInArea": false, "isMagical": true}]
       },
       "imgCard": "img/portraits/mageCard.jpg",
-      "imgGame": ""
+      "imgGame": "img/portraits/mageCard.jpg"
     },
     {
       "name": "Zelot Crusader",
@@ -80,7 +80,7 @@
         "basicItems": [{"name": "Big Heavy Sword", "desc": "Big Heavy Sword for slice enemies", "isEquipable": true, "type": "weapon", "values": [15, 0, 0, 0, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
       },
       "imgCard": "img/portraits/warriorCard.jpg",
-      "imgGame": ""
+      "imgGame": "img/portraits/warriorCard.jpg"
     },
     {
       "name": "Assassin rogue",
@@ -95,7 +95,7 @@
         "baseCritic": 15
       },
       "imgCard": "img/portraits/rogeCard.jpg",
-      "imgGame": ""
+      "imgGame": "img/portraits/rogeCard.jpg"
     },
     {
       "name": "Holy Vindicator",
@@ -109,7 +109,7 @@
         "basicItems": [{"name": "Holy Armor", "desc": "A Holy armor that show your enemies your Holiness", "isEquipable": true, "type": "armor", "values": [0, 0, 0, 20, 0], "isInArea": false, "isMagical": true, "quantity": 1}]
       },
       "imgCard": "img/portraits/paladinCard.jpg",
-      "imgGame": ""
+      "imgGame": "img/portraits/paladinCard.jpg"
     },
     {
       "name": "Ranger Walker",
@@ -122,7 +122,7 @@
         "baseCritic": 18
       },
       "imgCard": "img/portraits/rangerCard.jpg",
-      "imgGame": ""
+      "imgGame": "img/portraits/rangerCard.jpg"
     }
   ]
 }

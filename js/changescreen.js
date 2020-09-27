@@ -5,8 +5,19 @@ const selectedArray = [];
 const divDetailDisplay = document.getElementById("detailDisplay");
 divDetailDisplay.innerHTML = "";
 
+
+
+const elementNPC3 = document.getElementById("npc3");
+elementNPC3.innerHTML = "";
+
+
 const cambiaPantalla = (valor) => {
   let screen = "screen" + valor;
+
+  if(screen === "screen3" && !isFightable()){
+    return false;
+  }
+
   let arrayFases = ["screen1", "screen2", "screen3", "screen4"];
   arrayFases = arrayFases.filter((val) => !screen.includes(val));
 
@@ -14,6 +25,14 @@ const cambiaPantalla = (valor) => {
   for (let pantalla of arrayFases) {
     document.getElementById(pantalla).style.display = "none";
   }
+};
+
+const selectMap = (mapId, valor) => {
+  const mapArray =  JSON.parse(localStorage.getItem("maps"));
+  const map = mapArray[mapId];
+  document.getElementById('fightVisuals').style.backgroundImage = `url(${map.img})`;
+  cambiaPantalla(valor);
+  drawPlayers();
 };
 
 const deSelectCharacter = (i, pos) => {
@@ -24,6 +43,28 @@ const deSelectCharacter = (i, pos) => {
 
 const isFightable = () => {
   return selectedArray.length === 0 ? false : true;
+};
+
+const drawPlayers = () => {
+  for (const i in selectedArray) {
+    let elem = document.getElementById("ch"+(parseInt(i)+1));
+    console.log(selectedArray[i].imgGame);
+    elem.innerHTML = '';
+    selectedArray[i];
+    elem.innerHTML += `
+      <div class="stats" id="ch3Stat">
+        <div style="display: flex; flex-direction: row"> <span class="property">[${selectedArray[i].name}]</span> </div>
+        <div style="display: flex; flex-direction: row"> <span class="property">[HP] </span> ${selectedArray[i].hp} / ${selectedArray[i].initialHP}</div>
+        <div style="display: flex; flex-direction: row"> <span class="property">[MP] </span> ${selectedArray[i].mp} / ${selectedArray[i].initialMP}</div>
+      </div>
+      <div class="charImg" id="ch3Img" style="background-image: url(${selectedArray[i].imgGame})">
+        <div style="display: flex; flex-direction: row"></div>
+      </div>
+      <div class="charNum" id="ch3Numbers">
+        <div style="display: flex; flex-direction: row"></div>
+      </div>
+    `;
+  }
 }
 
 const selectCharacter = (i) => {
