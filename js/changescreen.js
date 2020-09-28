@@ -211,7 +211,10 @@ const fight = (whoStart) => {
       playerMove();
     }
   } 
+
   keepFighting();
+  var messageBody = document.querySelector('#progressText');
+  messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 };
 
 const npcWithLessLife = () => {
